@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/movie_avatar_width_size"
+    android:layout_height="@dimen/movie_avatar_height_size"
+    android:layout_marginEnd="@dimen/regular_margin"
+    app:cardCornerRadius="@dimen/regular_radius_400">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_item_movie_movie_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar" />
+
+</androidx.cardview.widget.CardView>
