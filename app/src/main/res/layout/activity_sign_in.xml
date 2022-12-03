@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha="0.8"
+        android:scaleType="centerCrop"
+        android:src="@drawable/test"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_sign_in_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_banner_starting"
+        app:layout_constraintBottom_toTopOf="@id/guideline_sign_in_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="@dimen/regular_margin_150"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_sign_in_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_sign_in_email"
+        style="@style/WhiteText.Normal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/regular_margin_150"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:background="@drawable/bg_rounded_edittext"
+        android:elevation="0dp"
+        android:inputType="textEmailAddress"
+        android:textAlignment="textStart"
+        android:hint="@string/email_hint"
+        android:padding="@dimen/app_padding"
+        android:textColorHint="@color/white_80"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_sign_in_guideline" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_sign_in_password"
+        style="@style/WhiteText.Normal"
+        android:layout_width="0dp"
+        android:textAlignment="textStart"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:background="@drawable/bg_rounded_edittext"
+        android:elevation="0dp"
+        android:inputType="textPassword"
+        android:hint="@string/password_hint"
+        android:padding="@dimen/app_padding"
+        android:textColorHint="@color/white_80"
+        app:layout_constraintEnd_toEndOf="@id/edittext_sign_in_email"
+        app:layout_constraintStart_toStartOf="@id/edittext_sign_in_email"
+        app:layout_constraintTop_toBottomOf="@id/edittext_sign_in_email" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_sign_in_login_button"
+        style="@style/WhiteText.Bold.125"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_login_button"
+        android:padding="@dimen/app_padding"
+        android:text="Login"
+        android:layout_marginBottom="@dimen/regular_margin"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="@dimen/app_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
