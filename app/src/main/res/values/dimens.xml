@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_padding">16dp</dimen>
+    <dimen name="app_padding_50">8dp</dimen>
+
+    <dimen name="regular_font_size">14sp</dimen>
+    <dimen name="regular_font_size_75">10sp</dimen>
+    <dimen name="regular_font_size_125">18sp</dimen>
+    <dimen name="regular_font_size_150">22sp</dimen>
+    <dimen name="regular_font_size_175">26sp</dimen>
+
+    <dimen name="regular_icon_size">30dp</dimen>
+    <dimen name="regular_icon_size_125">38dp</dimen>
+
+    <dimen name="category_height_size">250dp</dimen>
+
+    <dimen name="user_avatar_width_size">40dp</dimen>
+    <dimen name="user_avatar_height_size">40dp</dimen>
+
+    <dimen name="movie_avatar_width_size">120dp</dimen>
+    <dimen name="movie_avatar_height_size">180dp</dimen>
+
+    <dimen name="upgrade_button_width_size">100dp</dimen>
+    <dimen name="upgrade_button_height_size">32dp</dimen>
+
+    <dimen name="watch_button_width_size">100dp</dimen>
+    <dimen name="watch_button_height_size">40dp</dimen>
+
+    <dimen name="regular_button_width_size">40dp</dimen>
+    <dimen name="regular_button_height_size">40dp</dimen>
+
+    <dimen name="regular_button_width_size_125">50dp</dimen>
+    <dimen name="regular_button_height_size_125">50dp</dimen>
+
+    <dimen name="regular_radius">4dp</dimen>
+    <dimen name="regular_radius_200">8dp</dimen>
+    <dimen name="regular_radius_400">16dp</dimen>
+    <dimen name="regular_radius_500">20dp</dimen>
+
+    <dimen name="regular_button_margin">8dp</dimen>
+    <dimen name="regular_button_margin_150">12dp</dimen>
+    <dimen name="regular_button_margin_200">16dp</dimen>
+    <dimen name="regular_button_margin_250">20dp</dimen>
+    <dimen name="regular_button_margin_300">24dp</dimen>
+
+    <dimen name="regular_margin">20dp</dimen>
+    <dimen name="regular_margin_50">10dp</dimen>
+    <dimen name="regular_margin_150">30dp</dimen>
+    <dimen name="regular_margin_250">50dp</dimen>
+    <dimen name="regular_margin_350">70dp</dimen>
+    <dimen name="regular_margin_450">90dp</dimen>
+    <dimen name="regular_margin_550">110dp</dimen>
+    <dimen name="regular_margin_650">130dp</dimen>
+    <dimen name="regular_margin_750">150dp</dimen>
+    <dimen name="regular_margin_850">170dp</dimen>
+
+</resources>
