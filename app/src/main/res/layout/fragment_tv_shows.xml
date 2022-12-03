@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:alpha="0.8"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_tv_shows_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_banner"
+            android:elevation="0dp"
+            android:padding="@dimen/app_padding"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_tv_shows_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_tv_shows_categories"
+                style="@style/WhiteText.Normal.125"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/app_padding"
+                android:layout_height="wrap_content"
+                android:text="@string/all_categories"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_tv_shows_dropdown_icon"
+                android:layout_width="@dimen/regular_icon_size"
+                android:layout_height="@dimen/regular_icon_size"
+                android:layout_marginStart="@dimen/regular_margin_50"
+                android:src="@drawable/ic_baseline_arrow_drop_down"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/textview_tv_shows_categories"
+                app:layout_constraintStart_toEndOf="@id/textview_tv_shows_categories"
+                app:layout_constraintTop_toTopOf="@id/textview_tv_shows_categories" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_tv_shows_hot_movie"
+                style="@style/WhiteText.Bold.150"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/regular_margin"
+                android:maxWidth="200dp"
+                android:text="Deadpool 3"
+                app:layout_constraintBottom_toTopOf="@id/button_tv_shows_watch_button"
+                app:layout_constraintEnd_toEndOf="@id/button_tv_shows_watch_button"
+                app:layout_constraintStart_toStartOf="@id/button_tv_shows_watch_button" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_tv_shows_add_my_list_button"
+                style="@style/WhiteText.Normal.75"
+                android:layout_width="@dimen/regular_button_width_size"
+                android:layout_height="@dimen/regular_button_height_size"
+                android:layout_marginEnd="@dimen/regular_margin_150"
+                android:background="@color/transparent"
+                android:drawableTop="@drawable/ic_baseline_add"
+                android:drawableTint="@color/white"
+                android:text="@string/my_list_button"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="@id/button_tv_shows_watch_button"
+                app:layout_constraintEnd_toStartOf="@id/button_tv_shows_watch_button"
+                app:layout_constraintTop_toTopOf="@id/button_tv_shows_watch_button" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_tv_shows_watch_button"
+                style="@style/WhiteText.Bold"
+                android:layout_width="@dimen/watch_button_width_size"
+                android:layout_height="@dimen/watch_button_height_size"
+                android:layout_marginBottom="@dimen/regular_margin_350"
+                android:background="@drawable/bg_watch_button"
+                android:text="@string/watch_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_tv_shows_info_button"
+                style="@style/WhiteText.Normal.75"
+                android:layout_width="@dimen/regular_button_width_size"
+                android:layout_height="@dimen/regular_button_height_size"
+                android:layout_marginStart="@dimen/regular_margin_150"
+                android:background="@color/transparent"
+                android:drawableTop="@drawable/ic_baseline_info"
+                android:drawableTint="@color/white"
+                android:text="@string/info_button"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="@id/button_tv_shows_watch_button"
+                app:layout_constraintStart_toEndOf="@id/button_tv_shows_watch_button"
+                app:layout_constraintTop_toTopOf="@id/button_tv_shows_watch_button" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_tv_shows_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/regular_margin_50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_tv_shows_guideline"
+            app:layout_constraintStart_toStartOf="@id/guideline_tv_shows_guideline"
+            app:layout_constraintTop_toBottomOf="@id/guideline_tv_shows_guideline"
+            tools:listitem="@layout/item_category" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

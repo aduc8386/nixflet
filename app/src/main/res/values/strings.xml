@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Nixflet</string>
+    <string name="upgrade_button">Upgrade</string>
+    <string name="watch_button">Watch</string>
+    <string name="my_list_button">My List</string>
+    <string name="share_button">Share</string>
+    <string name="rate_button">Rate</string>
+    <string name="info_button">Info</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="movies">Movies</string>
+    <string name="categories">Categories</string>
+    <string name="all_categories">All Categories</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="overview">Overview</string>
 </resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/regular_margin_50"
+    android:background="@color/transparent"
+    android:padding="@dimen/app_padding_50">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle_imageview_item_user_comment_user_avatar"
+        android:layout_width="@dimen/user_avatar_width_size"
+        android:layout_height="@dimen/user_avatar_height_size"
+        android:src="@drawable/starting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_item_user_comment_user_comment"
+        style="@style/WhiteText.Normal.75"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/regular_margin_50"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi ipsum faucibus vitae aliquet. Integer enim neque volutpat ac tincidunt vitae semper quis. Amet venenatis urna cursus eget nunc. Porta non pulvinar neque laoreet suspendisse interdum. Faucibus scelerisque eleifend donec pretium vulputate sapien. Massa tempor nec feugiat nisl pretium fusce id velit. Ut enim blandit volutpat maecenas volutpat blandit. Purus semper eget duis at tellus at. Vel facilisis volutpat est velit."
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/circle_imageview_item_user_comment_user_avatar"
+        app:layout_constraintTop_toTopOf="@id/circle_imageview_item_user_comment_user_avatar" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/WhiteText.Normal.75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin_50"
+        android:text="Like"
+        android:id="@+id/textview_movie_detail_like"
+        android:textColor="@color/white_80"
+        app:layout_constraintStart_toStartOf="@id/textview_item_user_comment_user_comment"
+        app:layout_constraintTop_toBottomOf="@id/textview_item_user_comment_user_comment" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_movie_detail_reply"
+        style="@style/WhiteText.Normal.75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reply"
+        android:textColor="@color/white_80"
+        app:layout_constraintBottom_toBottomOf="@id/textview_movie_detail_like"
+        android:layout_marginStart="@dimen/regular_margin_150"
+        app:layout_constraintTop_toTopOf="@id/textview_movie_detail_like"
+        app:layout_constraintStart_toEndOf="@id/textview_movie_detail_like"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

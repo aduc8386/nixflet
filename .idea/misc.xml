@@ -3,7 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_main.xml" value="0.1640625" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-v24/bg_banner_starting.xml" value="0.1945" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-v24/bg_upgrade_button.xml" value="0.183" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.107" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-xhdpi/bg_big_watch_button.xml" value="0.161" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-xhdpi/bg_login_button.xml" value="0.1945" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-xhdpi/bg_login_button_starting.xml" value="0.1875" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-xhdpi/bg_register_button_starting.xml" value="0.1875" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_banner.xml" value="0.1865" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_edittext_user_comment.xml" value="0.264" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_rounded_edittext.xml" value="0.1945" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_rounded_movie_avatar.xml" value="0.1555" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_watch_button.xml" value="0.1865" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/ic_baseline_search.xml" value="0.183" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/ic_launcher_background.xml" value="0.123" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/ic_nixflet.xml" value="0.123" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_movie_detail.xml" value="0.2" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_profile_manager.xml" value="0.25" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_sign_in.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_starting.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_tv_shows.xml" value="0.25" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_main.xml" value="0.25" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_tv_shows.xml" value="0.25" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_category.xml" value="0.25" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_movie.xml" value="0.264" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_production_company.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_user_comment.xml" value="0.264" />
       </map>
     </option>
   </component>
