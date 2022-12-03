@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingTop="@dimen/app_padding"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_main_back_button"
+        android:layout_width="@dimen/regular_icon_size"
+        android:layout_height="@dimen/regular_icon_size"
+        android:elevation="0dp"
+        android:layout_marginTop="@dimen/app_padding"
+        android:layout_marginStart="@dimen/app_padding"
+        android:src="@drawable/ic_baseline_arrow_back"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_shows"
+        android:layout_marginStart="@dimen/regular_margin"
+        style="@style/WhiteText.Bold.150"
+        app:layout_constraintStart_toEndOf="@id/imageview_main_back_button"
+        app:layout_constraintTop_toTopOf="@id/imageview_main_back_button"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_main_back_button"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_main_search_icon"
+        android:layout_width="@dimen/regular_icon_size"
+        android:layout_height="@dimen/regular_icon_size"
+        android:layout_marginEnd="@dimen/regular_button_margin_300"
+        android:src="@drawable/ic_baseline_search"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_main_account_icon"
+        app:layout_constraintEnd_toStartOf="@id/imageview_main_account_icon"
+        app:layout_constraintTop_toTopOf="@id/imageview_main_account_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_main_account_icon"
+        android:layout_width="@dimen/regular_icon_size"
+        android:layout_height="@dimen/regular_icon_size"
+        android:layout_marginEnd="@dimen/regular_button_margin_300"
+        android:src="@drawable/ic_baseline_account_circle"
+        android:tint="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@id/button_main_upgrade_button"
+        app:layout_constraintEnd_toStartOf="@id/button_main_upgrade_button"
+        app:layout_constraintTop_toTopOf="@id/button_main_upgrade_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_main_upgrade_button"
+        android:layout_width="@dimen/upgrade_button_width_size"
+        android:layout_height="@dimen/upgrade_button_height_size"
+        android:background="@drawable/bg_upgrade_button"
+        android:elevation="0dp"
+        android:text="@string/upgrade_button"
+        android:layout_marginTop="@dimen/app_padding"
+        android:layout_marginEnd="@dimen/app_padding"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_main_fragment_container"
+        android:name="dhcnhn.aduc8386.nixflet.TVShowsFragment"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/regular_margin_50"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageview_main_back_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
