@@ -4,15 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingTop="@dimen/app_padding"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nixflet"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_main_app_icon"
+        android:layout_width="@dimen/regular_icon_size_125"
+        android:layout_height="@dimen/regular_icon_size_125"
+        android:elevation="0dp"
+        android:layout_marginTop="@dimen/app_padding"
+        android:layout_marginStart="@dimen/app_padding"
+        android:src="@drawable/ic_nixflet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_main_search_icon"
+        android:layout_width="@dimen/regular_icon_size"
+        android:layout_height="@dimen/regular_icon_size"
+        android:layout_marginEnd="@dimen/regular_button_margin_300"
+        android:src="@drawable/ic_baseline_search"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_main_account_icon"
+        app:layout_constraintEnd_toStartOf="@id/imageview_main_account_icon"
+        app:layout_constraintTop_toTopOf="@id/imageview_main_account_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_main_account_icon"
+        android:layout_width="@dimen/regular_icon_size"
+        android:layout_height="@dimen/regular_icon_size"
+        android:layout_marginEnd="@dimen/regular_button_margin_300"
+        android:src="@drawable/ic_baseline_account_circle"
+        android:tint="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@id/button_main_upgrade_button"
+        app:layout_constraintEnd_toStartOf="@id/button_main_upgrade_button"
+        app:layout_constraintTop_toTopOf="@id/button_main_upgrade_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_main_upgrade_button"
+        android:layout_width="@dimen/upgrade_button_width_size"
+        android:layout_height="@dimen/upgrade_button_height_size"
+        android:background="@drawable/bg_upgrade_button"
+        android:elevation="0dp"
+        android:text="@string/upgrade_button"
+        android:layout_marginTop="@dimen/app_padding"
+        android:layout_marginEnd="@dimen/app_padding"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_main_fragment_container"
+        android:name="dhcnhn.aduc8386.nixflet.MainFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imageview_main_app_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
