@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".controller.activity.MainActivity">
+    android:background="@color/black">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container_main_fragment_container"
-        android:name="dhcnhn.aduc8386.nixflet.controller.fragment.MainFragment"
+        android:id="@+id/fragment_container_movie_fragment_container"
+        android:name="dhcnhn.aduc8386.nixflet.controller.fragment.MovieFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
@@ -22,41 +21,51 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_main_app_icon"
-            android:layout_width="@dimen/regular_icon_size_125"
-            android:layout_height="@dimen/regular_icon_size_125"
+            android:id="@+id/imageview_movie_back_button"
+            android:layout_width="@dimen/regular_icon_size"
+            android:layout_height="@dimen/regular_icon_size"
             android:layout_marginStart="@dimen/app_padding"
             android:layout_marginTop="@dimen/app_padding"
             android:elevation="0dp"
-            android:src="@drawable/ic_nixflet_icon"
+            android:tint="@color/white"
+            android:src="@drawable/ic_baseline_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/WhiteText.Bold.150"
+            android:layout_marginStart="@dimen/regular_margin"
+            app:layout_constraintStart_toEndOf="@id/imageview_movie_back_button"
+            app:layout_constraintTop_toTopOf="@id/imageview_movie_back_button"
+            app:layout_constraintBottom_toBottomOf="@id/imageview_movie_back_button"
+            android:text="@string/movie"/>
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_main_search_icon"
+            android:id="@+id/imageview_movie_search_icon"
             android:layout_width="@dimen/regular_icon_size"
             android:layout_height="@dimen/regular_icon_size"
             android:layout_marginEnd="@dimen/regular_button_margin_300"
             android:src="@drawable/ic_baseline_search"
             android:tint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/imageview_main_account_icon"
-            app:layout_constraintEnd_toStartOf="@id/imageview_main_account_icon"
-            app:layout_constraintTop_toTopOf="@id/imageview_main_account_icon" />
+            app:layout_constraintBottom_toBottomOf="@id/imageview_movie_account_icon"
+            app:layout_constraintEnd_toStartOf="@id/imageview_movie_account_icon"
+            app:layout_constraintTop_toTopOf="@id/imageview_movie_account_icon" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_main_account_icon"
+            android:id="@+id/imageview_movie_account_icon"
             android:layout_width="@dimen/regular_icon_size"
             android:layout_height="@dimen/regular_icon_size"
             android:layout_marginEnd="@dimen/regular_button_margin_300"
             android:src="@drawable/ic_baseline_account_circle"
             android:tint="@color/gray"
-            app:layout_constraintBottom_toBottomOf="@id/button_main_upgrade_button"
-            app:layout_constraintEnd_toStartOf="@id/button_main_upgrade_button"
-            app:layout_constraintTop_toTopOf="@id/button_main_upgrade_button" />
+            app:layout_constraintBottom_toBottomOf="@id/button_movie_upgrade_button"
+            app:layout_constraintEnd_toStartOf="@id/button_movie_upgrade_button"
+            app:layout_constraintTop_toTopOf="@id/button_movie_upgrade_button" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_main_upgrade_button"
+            android:id="@+id/button_movie_upgrade_button"
             android:layout_width="@dimen/upgrade_button_width_size"
             android:layout_height="@dimen/upgrade_button_height_size"
             android:layout_marginTop="@dimen/app_padding"

@@ -7,10 +7,12 @@
     <string name="rate_button">Rate</string>
     <string name="info_button">Info</string>
     <string name="tv_shows">TV Shows</string>
-    <string name="movies">Movies</string>
+    <string name="movieResponses">Movies</string>
     <string name="categories">Categories</string>
     <string name="all_categories">All Categories</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="overview">Overview</string>
+    <string name="copyright">Copyright© by Group 6 - HaUI</string>
+    <string name="movie">Movie</string>
 </resources>

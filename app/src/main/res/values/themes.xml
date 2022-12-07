@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/black</item>
-        <item name="android:windowTranslucentStatus">true</item>
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
 <!--        <item name="android:windowTranslucentNavigation">true</item>-->
         <!-- Customize your theme here. -->
         <item name="colorControlNormal">@color/white_80</item>
@@ -60,5 +60,11 @@
 
     <style name="WhiteText.Italic.75" parent="WhiteText.Italic">
         <item name="android:textSize">@dimen/regular_font_size_75</item>
+    </style>
+
+    <style name="WhiteOpacity.Italic.75" parent="WhiteText.Normal">
+        <item name="android:textSize">@dimen/regular_font_size_75</item>
+        <item name="android:textColor">@color/white_80</item>
+        <item name="android:textStyle">italic</item>
     </style>
 </resources>

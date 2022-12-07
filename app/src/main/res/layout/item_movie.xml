@@ -10,7 +10,6 @@
         android:id="@+id/imageview_item_movie_movie_avatar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/avatar" />
+        android:scaleType="centerCrop"/>
 
 </androidx.cardview.widget.CardView>

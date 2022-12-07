@@ -1,3 +1,3 @@
 # nixflet
 
-A coolest movie app
+A coolest movieResponse app

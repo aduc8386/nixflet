@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,11 +13,10 @@
         android:background="@color/black">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_movie_detail_movie_banner"
+            android:id="@+id/imageview_movie_detail_movie_backdrop"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/banner"
             app:layout_constraintBottom_toTopOf="@id/guideline_movie_detail_guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_begin="250dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_movie_detail_movie_avatar"
@@ -51,11 +50,10 @@
             app:layout_constraintTop_toTopOf="@id/guideline_movie_detail_guideline">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageview_movie_detail_movie_avatar"
+                android:id="@+id/imageview_movie_detail_movie_poster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/avatar" />
+                android:scaleType="centerCrop" />
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -64,17 +62,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/regular_margin"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/regular_margin"
             android:layout_marginBottom="@dimen/regular_margin_150"
-            android:text="Deadpool 3"
             app:layout_constraintBottom_toTopOf="@id/guideline_movie_detail_guideline"
             app:layout_constraintStart_toEndOf="@id/card_view_movie_detail_movie_avatar" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textview_movie_detail_movie_category"
+            android:id="@+id/textview_movie_detail_movie_genre"
             style="@style/WhiteText.Italic"
             android:layout_width="0dp"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/regular_margin"
             android:layout_height="wrap_content"
-            android:text="Action"
             app:layout_constraintStart_toStartOf="@id/textview_movie_detail_movie_name"
             app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_movie_name" />
 
@@ -150,6 +152,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/regular_margin_150"
                 android:text="@string/overview"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="@id/button_movie_detail_watch_button"
                 app:layout_constraintStart_toStartOf="@id/button_movie_detail_watch_button"
                 app:layout_constraintTop_toBottomOf="@id/button_movie_detail_watch_button" />
 
@@ -159,33 +163,56 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/regular_margin_50"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi ipsum faucibus vitae aliquet. Integer enim neque volutpat ac tincidunt vitae semper quis. Amet venenatis urna cursus eget nunc. Porta non pulvinar neque laoreet suspendisse interdum. Faucibus scelerisque eleifend donec pretium vulputate sapien. Massa tempor nec feugiat nisl pretium fusce id velit. Ut enim blandit volutpat maecenas volutpat blandit. Purus semper eget duis at tellus at. Vel facilisis volutpat est velit."
                 android:textAlignment="gravity"
                 android:textColor="@color/white_80"
                 app:layout_constraintStart_toStartOf="@id/button_movie_detail_watch_button"
                 app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_movie_over_view" />
 
+
+
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_movie_detail_production_companies"
+                android:id="@+id/textview_movie_detail_casts"
                 style="@style/WhiteText.Bold.150"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/regular_margin_150"
-                android:text="Production Companies"
-                app:layout_constraintStart_toStartOf="@id/textview_movie_detail_movie_overview"
+                android:text="Casts"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="@id/textview_movie_detail_movie_over_view"
+                app:layout_constraintStart_toStartOf="@id/textview_movie_detail_movie_over_view"
                 app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_movie_overview" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_movie_detail_production_companies"
+                android:id="@+id/recyclerview_movie_detail_cast"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/regular_margin_50"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="@id/textview_movie_detail_movie_overview"
-                app:layout_constraintStart_toStartOf="@id/textview_movie_detail_movie_overview"
-                app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_production_companies"
-                tools:listitem="@layout/item_production_company" />
+                app:layout_constraintEnd_toEndOf="@id/textview_movie_detail_casts"
+                app:layout_constraintStart_toStartOf="@id/textview_movie_detail_casts"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_casts" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_movie_detail_video"
+            style="@style/WhiteText.Bold.150"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular_margin_150"
+            android:text="Videos"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="@id/recyclerview_movie_detail_cast"
+            app:layout_constraintStart_toStartOf="@id/recyclerview_movie_detail_cast"
+            app:layout_constraintTop_toBottomOf="@id/recyclerview_movie_detail_cast" />
+
+            <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_movie_detail_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/regular_margin_50"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/textview_movie_detail_video"
+            app:layout_constraintStart_toStartOf="@id/textview_movie_detail_video"
+            app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_video" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_movie_detail_comments"
@@ -194,16 +221,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/regular_margin_150"
                 android:text="Comments"
-                app:layout_constraintStart_toStartOf="@id/recyclerview_movie_detail_production_companies"
-                app:layout_constraintTop_toBottomOf="@id/recyclerview_movie_detail_production_companies" />
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="@id/recyclerview_movie_detail_video"
+                app:layout_constraintStart_toStartOf="@id/recyclerview_movie_detail_video"
+                app:layout_constraintTop_toBottomOf="@id/recyclerview_movie_detail_video" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_movie_detail_user_comments"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/regular_margin_50"
                 app:layout_constraintBottom_toTopOf="@id/circle_imageview_movie_detail_user_avatar"
-                app:layout_constraintStart_toStartOf="@id/textview_movie_detail_comments"
                 app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_comments"
                 tools:listitem="@layout/item_user_comment" />
 
@@ -213,7 +241,7 @@
                 android:layout_height="@dimen/user_avatar_height_size"
                 android:layout_marginStart="@dimen/app_padding_50"
                 android:layout_marginTop="@dimen/regular_margin_50"
-                android:src="@drawable/starting"
+                android:src="@drawable/user_avatar_holder"
                 app:layout_constraintStart_toStartOf="@id/recyclerview_movie_detail_user_comments"
                 app:layout_constraintTop_toBottomOf="@id/recyclerview_movie_detail_user_comments" />
 
@@ -224,9 +252,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/regular_margin_50"
                 android:hint="Write your comment"
-                app:layout_constraintBottom_toBottomOf="@id/circle_imageview_movie_detail_user_avatar"
                 android:textAlignment="textStart"
                 android:textColorHint="@color/white_80"
+                app:layout_constraintBottom_toBottomOf="@id/circle_imageview_movie_detail_user_avatar"
                 app:layout_constraintEnd_toStartOf="@id/imageview_movie_detail_send"
                 app:layout_constraintStart_toEndOf="@id/circle_imageview_movie_detail_user_avatar"
                 app:layout_constraintTop_toTopOf="@id/circle_imageview_movie_detail_user_avatar" />
@@ -236,16 +264,48 @@
                 android:layout_width="@dimen/regular_icon_size"
                 android:layout_height="@dimen/regular_icon_size"
                 android:layout_marginStart="@dimen/regular_margin_50"
+                android:src="@drawable/ic_baseline_send"
                 android:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/edittext_movie_detail_user_comment"
-                android:src="@drawable/ic_baseline_send"
                 app:layout_constraintEnd_toEndOf="@id/recyclerview_movie_detail_user_comments"
                 app:layout_constraintStart_toEndOf="@id/edittext_movie_detail_user_comment"
                 app:layout_constraintTop_toTopOf="@id/edittext_movie_detail_user_comment" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textview_movie_detail_recommendation"
+                android:text="Recommendations"
+                android:layout_marginTop="@dimen/regular_margin_150"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="@id/circle_imageview_movie_detail_user_avatar"
+                app:layout_constraintEnd_toEndOf="@id/imageview_movie_detail_send"
+                app:layout_constraintTop_toBottomOf="@id/circle_imageview_movie_detail_user_avatar"
+                style="@style/WhiteText.Bold.150"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/regular_margin"
+                android:id="@+id/recyclerview_movie_detail_recommendation"
+                app:layout_constraintStart_toStartOf="@id/textview_movie_detail_recommendation"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_recommendation"
+                app:layout_constraintEnd_toEndOf="@id/textview_movie_detail_recommendation"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/WhiteOpacity.Italic.75"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/copyright"
+                android:layout_marginTop="@dimen/regular_margin_150"
+                app:layout_constraintEnd_toEndOf="@id/recyclerview_movie_detail_recommendation"
+                app:layout_constraintStart_toStartOf="@id/recyclerview_movie_detail_recommendation"
+                app:layout_constraintTop_toBottomOf="@id/recyclerview_movie_detail_recommendation" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

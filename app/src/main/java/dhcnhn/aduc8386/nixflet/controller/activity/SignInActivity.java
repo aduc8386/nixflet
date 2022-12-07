@@ -1,4 +1,4 @@
-package dhcnhn.aduc8386.nixflet;
+package dhcnhn.aduc8386.nixflet.controller.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import dhcnhn.aduc8386.nixflet.R;
 
 public class SignInActivity extends AppCompatActivity {
 

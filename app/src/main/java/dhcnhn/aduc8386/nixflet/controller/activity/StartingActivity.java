@@ -1,4 +1,4 @@
-package dhcnhn.aduc8386.nixflet;
+package dhcnhn.aduc8386.nixflet.controller.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import dhcnhn.aduc8386.nixflet.R;
 
 public class StartingActivity extends AppCompatActivity {
 
@@ -29,6 +31,14 @@ public class StartingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartingActivity.this, SignInActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartingActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });

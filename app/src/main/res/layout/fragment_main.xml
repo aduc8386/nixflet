@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -13,11 +12,11 @@
         android:background="@color/black">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_main_movie_poster"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:alpha="0.8"
             android:scaleType="centerCrop"
-            android:src="@drawable/avatar"
             app:layout_constraintBottom_toBottomOf="@id/guideline_main_guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +37,7 @@
                 android:id="@+id/textview_main_tv_shows"
                 style="@style/WhiteText.Normal.125"
                 android:layout_width="0dp"
+                android:layout_marginTop="@dimen/regular_margin_350"
                 android:layout_height="wrap_content"
                 android:text="@string/tv_shows"
                 app:layout_constraintEnd_toStartOf="@id/textview_main_movies"
@@ -49,7 +49,7 @@
                 style="@style/WhiteText.Normal.125"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/movies"
+                android:text="@string/movieResponses"
                 app:layout_constraintBottom_toBottomOf="@id/textview_main_tv_shows"
                 app:layout_constraintEnd_toStartOf="@id/textview_main_categories"
                 app:layout_constraintStart_toEndOf="@id/textview_main_tv_shows"
@@ -78,13 +78,12 @@
                 app:layout_constraintTop_toTopOf="@id/textview_main_categories" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_main_hot_movie"
-                style="@style/WhiteText.Bold.150"
+                android:id="@+id/textview_main_movie_name"
+                style="@style/WhiteText.Bold.175"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/regular_margin"
                 android:maxWidth="200dp"
-                android:text="Deadpool 3"
                 app:layout_constraintBottom_toTopOf="@id/button_main_watch_button"
                 app:layout_constraintEnd_toEndOf="@id/button_main_watch_button"
                 app:layout_constraintStart_toStartOf="@id/button_main_watch_button" />
@@ -110,7 +109,7 @@
                 style="@style/WhiteText.Bold"
                 android:layout_width="@dimen/watch_button_width_size"
                 android:layout_height="@dimen/watch_button_height_size"
-                android:layout_marginBottom="@dimen/regular_margin_350"
+                android:layout_marginBottom="@dimen/regular_margin_250"
                 android:background="@drawable/bg_watch_button"
                 android:text="@string/watch_button"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -140,18 +139,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.8" />
+            app:layout_constraintGuide_begin="650dp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_main_category_list"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/regular_margin_50"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/guideline_main_guideline"
-            app:layout_constraintStart_toStartOf="@id/guideline_main_guideline"
-            app:layout_constraintTop_toBottomOf="@id/guideline_main_guideline"
-            tools:listitem="@layout/item_category" />
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/guideline_main_guideline" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/WhiteOpacity.Italic.75"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/copyright"
+            app:layout_constraintEnd_toEndOf="@id/recyclerview_main_category_list"
+            app:layout_constraintStart_toStartOf="@id/recyclerview_main_category_list"
+            app:layout_constraintTop_toBottomOf="@id/recyclerview_main_category_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
