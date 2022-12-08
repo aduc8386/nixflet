@@ -20,6 +20,7 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import dhcnhn.aduc8386.nixflet.R;
 import dhcnhn.aduc8386.nixflet.controller.activity.MainActivity;
@@ -99,9 +100,12 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
                         movieResponses.add(gson.fromJson(result.get(i), MovieResponse.class));
                     }
 
-                    textViewTVShowName.setText(movieResponses.get(0).getName());
+                    Random random = new Random();
+                    int ranNum = random.nextInt(result.size());
+
+                    textViewTVShowName.setText(movieResponses.get(ranNum).getName());
                     Glide.with(TVShowFragment.this.getContext()).
-                            load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(0).getPosterPath()))
+                            load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(ranNum).getPosterPath()))
                             .centerCrop()
                             .error(R.drawable.ic_nixflet_text)
                             .into(imageViewTVShowPoster);

@@ -2,8 +2,8 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/cast_avatar_width_size"
     android:layout_height="wrap_content"
-    android:background="@color/transparent"
     android:layout_marginEnd="@dimen/regular_margin"
+    android:background="@color/transparent"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,16 +16,15 @@
             android:id="@+id/imageview_item_cast_cast_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/user_avatar_holder" />
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_item_cast_cast_name"
         style="@style/WhiteText.Bold"
-        android:layout_marginTop="@dimen/regular_margin_50"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin_50"
         android:text="User" />
 </androidx.appcompat.widget.LinearLayoutCompat>

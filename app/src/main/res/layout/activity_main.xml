@@ -11,14 +11,13 @@
         android:id="@+id/fragment_container_main_fragment_container"
         android:name="dhcnhn.aduc8386.nixflet.controller.fragment.MainFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:elevation="0dp"
         android:background="@color/black_30"
+        android:elevation="0dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -31,7 +30,6 @@
             android:src="@drawable/ic_nixflet_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageview_main_search_icon"
@@ -68,8 +66,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

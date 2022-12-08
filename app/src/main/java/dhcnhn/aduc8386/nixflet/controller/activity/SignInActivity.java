@@ -49,7 +49,8 @@ public class SignInActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-                FirebaseAuthHelper.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
+                FirebaseAuthHelper.getInstance().signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         FirebaseDatabaseHelper.getUserReference().child(FirebaseAuthHelper.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
@@ -70,7 +71,6 @@ public class SignInActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-
             }
         });
     }

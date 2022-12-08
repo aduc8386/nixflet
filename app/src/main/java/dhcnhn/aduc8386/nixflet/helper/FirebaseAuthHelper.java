@@ -17,9 +17,5 @@ public class FirebaseAuthHelper {
     public static FirebaseUser getCurrentUser() {
         return getInstance().getCurrentUser();
     }
-//
-//    public static void registerUserWithEmailAndPassword(String email, String password) {
-//        getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener()
-//    }
 
 }

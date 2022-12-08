@@ -21,6 +21,7 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import dhcnhn.aduc8386.nixflet.R;
 import dhcnhn.aduc8386.nixflet.controller.activity.MainActivity;
@@ -75,9 +76,12 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
                         movieResponses.add(gson.fromJson(result.get(i), MovieResponse.class));
                     }
 
-                    textViewMovieName.setText(movieResponses.get(0).getTitle());
+                    Random random = new Random();
+                    int ranNum = random.nextInt(result.size());
+
+                    textViewMovieName.setText(movieResponses.get(ranNum).getTitle());
                     Glide.with(MovieFragment.this.getContext()).
-                            load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(0).getPosterPath()))
+                            load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(ranNum).getPosterPath()))
                             .centerCrop()
                             .error(R.drawable.ic_nixflet_text)
                             .into(imageViewMoviePoster);

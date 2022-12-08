@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/category_height_size"
     android:layout_marginBottom="@dimen/regular_margin"
-    android:background="@color/black"
+    android:background="@color/transparent"
     android:paddingHorizontal="@dimen/app_padding">
 
     <androidx.appcompat.widget.AppCompatTextView
