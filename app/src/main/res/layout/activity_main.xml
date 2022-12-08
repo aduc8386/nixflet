@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:elevation="0dp"
-        android:background="@color/gray_30"
+        android:background="@color/black_30"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -44,7 +44,7 @@
             app:layout_constraintEnd_toStartOf="@id/imageview_main_account_icon"
             app:layout_constraintTop_toTopOf="@id/imageview_main_account_icon" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageview_main_account_icon"
             android:layout_width="@dimen/regular_icon_size"
             android:layout_height="@dimen/regular_icon_size"

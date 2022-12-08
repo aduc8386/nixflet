@@ -24,7 +24,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@drawable/bg_banner_starting"
+            android:background="@drawable/bg_banner_bottom"
             android:elevation="0dp"
             android:padding="@dimen/app_padding"
             app:layout_constraintBottom_toTopOf="@id/guideline_movie_detail_guideline"
@@ -231,12 +231,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/regular_margin_50"
-                app:layout_constraintBottom_toTopOf="@id/circle_imageview_movie_detail_user_avatar"
+                app:layout_constraintBottom_toTopOf="@id/circle_imageview_movie_detail_user_profile"
                 app:layout_constraintTop_toBottomOf="@id/textview_movie_detail_comments"
                 tools:listitem="@layout/item_user_comment" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circle_imageview_movie_detail_user_avatar"
+                android:id="@+id/circle_imageview_movie_detail_user_profile"
                 android:layout_width="@dimen/user_avatar_width_size"
                 android:layout_height="@dimen/user_avatar_height_size"
                 android:layout_marginStart="@dimen/app_padding_50"
@@ -254,10 +254,10 @@
                 android:hint="Write your comment"
                 android:textAlignment="textStart"
                 android:textColorHint="@color/white_80"
-                app:layout_constraintBottom_toBottomOf="@id/circle_imageview_movie_detail_user_avatar"
+                app:layout_constraintBottom_toBottomOf="@id/circle_imageview_movie_detail_user_profile"
                 app:layout_constraintEnd_toStartOf="@id/imageview_movie_detail_send"
-                app:layout_constraintStart_toEndOf="@id/circle_imageview_movie_detail_user_avatar"
-                app:layout_constraintTop_toTopOf="@id/circle_imageview_movie_detail_user_avatar" />
+                app:layout_constraintStart_toEndOf="@id/circle_imageview_movie_detail_user_profile"
+                app:layout_constraintTop_toTopOf="@id/circle_imageview_movie_detail_user_profile" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageview_movie_detail_send"
@@ -279,9 +279,9 @@
                 android:text="Recommendations"
                 android:layout_marginTop="@dimen/regular_margin_150"
                 android:textAlignment="textStart"
-                app:layout_constraintStart_toStartOf="@id/circle_imageview_movie_detail_user_avatar"
+                app:layout_constraintStart_toStartOf="@id/circle_imageview_movie_detail_user_profile"
                 app:layout_constraintEnd_toEndOf="@id/imageview_movie_detail_send"
-                app:layout_constraintTop_toBottomOf="@id/circle_imageview_movie_detail_user_avatar"
+                app:layout_constraintTop_toBottomOf="@id/circle_imageview_movie_detail_user_profile"
                 style="@style/WhiteText.Bold.150"/>
 
             <androidx.recyclerview.widget.RecyclerView

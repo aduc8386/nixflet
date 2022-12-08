@@ -196,7 +196,6 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
 
     @Override
     public void onCategoryClick(MovieResponse movieResponse) {
-        Log.d("TAG", "onCategoryClick: " + movieResponse.getTitle());
 
         Intent intent = new Intent(MovieFragment.this.getContext(), MovieDetailActivity.class);
 

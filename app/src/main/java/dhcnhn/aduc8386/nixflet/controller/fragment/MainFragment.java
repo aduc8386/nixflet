@@ -300,16 +300,11 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
 
     @Override
     public void onCategoryClick(MovieResponse movieResponse) {
-        Log.d("TAG", "onCategoryClick: " + movieResponse.getTitle());
 
         Intent intent = new Intent(MainFragment.this.getContext(), MovieDetailActivity.class);
 
         intent.putExtra(MainActivity.MOVIE_ID, movieResponse.getId());
-        if(movieResponse.getTitle() != null) {
-            intent.putExtra(MainActivity.IS_MOVIE, true);
-        } else {
-            intent.putExtra(MainActivity.IS_MOVIE, false);
-        }
+        intent.putExtra(MainActivity.IS_MOVIE, movieResponse.getTitle() != null);
 
         startActivity(intent);
     }

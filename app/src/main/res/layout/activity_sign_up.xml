@@ -18,20 +18,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/bg_banner"
+        android:background="@drawable/bg_banner_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_sign_up_user_avatar"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circle_imageview_sign_up_user_profile"
+            android:layout_width="@dimen/user_avatar_width_size_300"
+            android:layout_height="@dimen/user_avatar_height_size_300"
             android:layout_marginTop="@dimen/regular_margin_450"
             android:elevation="0dp"
-            android:src="@drawable/ic_nixflet_text"
+            app:civ_border_color="@color/color_primary_30"
+            app:civ_border_width="4dp"
+            android:src="@drawable/user_avatar_holder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +55,7 @@
             android:textColorHint="@color/white_80"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageview_sign_up_user_avatar" />
+            app:layout_constraintTop_toBottomOf="@id/circle_imageview_sign_up_user_profile" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edittext_sign_up_email"
@@ -99,7 +101,7 @@
             android:background="@drawable/bg_rounded_edittext"
             android:elevation="0dp"
             android:hint="Confirm Password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:padding="@dimen/app_padding"
             android:textAlignment="textStart"
             android:textColorHint="@color/white_80"
@@ -108,7 +110,7 @@
             app:layout_constraintTop_toBottomOf="@id/edittext_sign_up_password" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_sign_up_login_button"
+            android:id="@+id/button_sign_up_register_button"
             style="@style/WhiteText.Bold.125"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -3,30 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dhcnhn.aduc8386.nixflet">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
-<!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
+    <!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
 
-<!--    <queries>-->
-<!--        <intent>-->
-<!--            <action android:name="com.google.android.youtube.api.service.START"/>-->
-<!--        </intent>-->
-<!--    </queries>-->
+    <!--    <queries>-->
+    <!--        <intent>-->
+    <!--            <action android:name="com.google.android.youtube.api.service.START"/>-->
+    <!--        </intent>-->
+    <!--    </queries>-->
 
     <application
+        android:name=".controller.NixfletApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nixflet"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
         <activity
-            android:name=".controller.activity.MainActivity"
+            android:name=".controller.activity.StartingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,12 +35,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".controller.activity.MainActivity"/>-->
-        <activity android:name=".controller.activity.MovieDetailActivity"/>
-        <activity android:name=".controller.activity.SignInActivity"/>
-        <activity android:name=".controller.activity.SignUpActivity"/>
-        <activity android:name=".controller.activity.TVShowActivity"/>
-        <activity android:name=".controller.activity.MovieActivity"/>
+        <activity android:name=".controller.activity.MainActivity" />
+        <activity android:name=".controller.activity.MovieDetailActivity" />
+        <activity android:name=".controller.activity.SignInActivity" />
+        <activity android:name=".controller.activity.SignUpActivity" />
+        <activity android:name=".controller.activity.TVShowActivity" />
+        <activity android:name=".controller.activity.MovieActivity" />
     </application>
 
 </manifest>

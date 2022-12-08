@@ -20,6 +20,9 @@
     <dimen name="user_avatar_width_size_300">120dp</dimen>
     <dimen name="user_avatar_height_size_300">120dp</dimen>
 
+    <dimen name="user_avatar_width_size_400">160dp</dimen>
+    <dimen name="user_avatar_height_size_400">160dp</dimen>
+
     <dimen name="movie_video_width_size">320dp</dimen>
     <dimen name="movie_video_height_size">180dp</dimen>
 

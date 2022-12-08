@@ -1,25 +1,46 @@
 package dhcnhn.aduc8386.nixflet.model;
 
-public class UserComment {
-    private String name;
-    private String comment;
-    private String avatarPath;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.UUID;
 
-    public UserComment(String name, String comment, String avatarPath) {
-        this.name = name;
-        this.comment = comment;
-        this.avatarPath = avatarPath;
+public class UserComment {
+    private long id;
+    private User user;
+    private String comment;
+
+    public UserComment() {
     }
 
-    public String getName() {
-        return name;
+    public UserComment(User user, String comment) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        this.id = timestamp.getTime();
+        this.user = user;
+        this.comment = comment;
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public String getComment() {
         return comment;
     }
 
-    public String getAvatarPath() {
-        return avatarPath;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

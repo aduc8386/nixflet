@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dhcnhn.aduc8386.nixflet.R;
+import dhcnhn.aduc8386.nixflet.helper.FirebaseAuthHelper;
 
 public class StartingActivity extends AppCompatActivity {
 
@@ -18,6 +19,7 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_starting);
 
         bindView();
@@ -42,5 +44,15 @@ public class StartingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(FirebaseAuthHelper.getCurrentUser() != null) {
+            Intent intent = new Intent(StartingActivity.this, MainActivity.class);
+            finish();
+            startActivity(intent);
+        }
     }
 }

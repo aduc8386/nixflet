@@ -2,7 +2,6 @@ package dhcnhn.aduc8386.nixflet.controller.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +24,6 @@ import java.util.List;
 import dhcnhn.aduc8386.nixflet.R;
 import dhcnhn.aduc8386.nixflet.controller.activity.MainActivity;
 import dhcnhn.aduc8386.nixflet.controller.activity.MovieDetailActivity;
-import dhcnhn.aduc8386.nixflet.controller.activity.TVShowActivity;
 import dhcnhn.aduc8386.nixflet.controller.adapter.CategoryAdapter;
 import dhcnhn.aduc8386.nixflet.model.Category;
 import dhcnhn.aduc8386.nixflet.model.MovieResponse;
@@ -37,19 +35,17 @@ import retrofit2.Response;
 public class TVShowFragment extends Fragment implements CategoryAdapter.OnCategoryClickListener {
 
 
-    private TextView textViewTVShows;
-    private TextView textViewMovieName;
-    private ImageView imageViewMoviePoster;
+    private TextView textViewTVShowName;
+    private ImageView imageViewTVShowPoster;
 
-    private RecyclerView recyclerViewListMovie;
+    private RecyclerView recyclerViewListTVShow;
 
-    private CategoryAdapter movieAdapter;
+    private CategoryAdapter tvShowAdapter;
 
-    private List<Category> movies;
-
+    private List<Category> tvShows;
 
     public TVShowFragment() {
-        super(R.layout.fragment_main);
+        super(R.layout.fragment_tv_show);
     }
 
     @Override
@@ -77,8 +73,8 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
                         movieResponses.add(gson.fromJson(result.get(i), MovieResponse.class));
                     }
 
-                    movies.add(new Category("TV Shows Today", movieResponses));
-                    movieAdapter.notifyDataSetChanged();
+                    tvShows.add(new Category("TV Shows Today", movieResponses));
+                    tvShowAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -103,15 +99,15 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
                         movieResponses.add(gson.fromJson(result.get(i), MovieResponse.class));
                     }
 
-                    textViewMovieName.setText(movieResponses.get(0).getName());
+                    textViewTVShowName.setText(movieResponses.get(0).getName());
                     Glide.with(TVShowFragment.this.getContext()).
                             load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(0).getPosterPath()))
                             .centerCrop()
                             .error(R.drawable.ic_nixflet_text)
-                            .into(imageViewMoviePoster);
+                            .into(imageViewTVShowPoster);
 
-                    movies.add(new Category("Popular TV Shows", movieResponses));
-                    movieAdapter.notifyDataSetChanged();
+                    tvShows.add(new Category("Popular TV Shows", movieResponses));
+                    tvShowAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -136,8 +132,8 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
                         movieResponses.add(gson.fromJson(result.get(i), MovieResponse.class));
                     }
 
-                    movies.add(new Category("Top Rated TV Shows", movieResponses));
-                    movieAdapter.notifyDataSetChanged();
+                    tvShows.add(new Category("Top Rated TV Shows", movieResponses));
+                    tvShowAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -151,33 +147,23 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
     }
 
     private void bindView(View view) {
-        textViewTVShows = view.findViewById(R.id.textview_main_tv_shows);
-        recyclerViewListMovie = view.findViewById(R.id.recyclerview_main_category_list);
-        textViewMovieName = view.findViewById(R.id.textview_main_movie_name);
-        imageViewMoviePoster = view.findViewById(R.id.imageview_main_movie_poster);
+        recyclerViewListTVShow = view.findViewById(R.id.recyclerview_tv_show_category_list);
+        textViewTVShowName = view.findViewById(R.id.textview_tv_show_tv_show_name);
+        imageViewTVShowPoster = view.findViewById(R.id.imageview_tv_show_tv_show_poster);
 
-        movies = new ArrayList<>();
-        movieAdapter = new CategoryAdapter(movies, this);
-        recyclerViewListMovie.setAdapter(movieAdapter);
-        recyclerViewListMovie.setLayoutManager(new LinearLayoutManager(TVShowFragment.this.getActivity(), LinearLayoutManager.VERTICAL, false));
+        tvShows = new ArrayList<>();
+        tvShowAdapter = new CategoryAdapter(tvShows, this);
+        recyclerViewListTVShow.setAdapter(tvShowAdapter);
+        recyclerViewListTVShow.setLayoutManager(new LinearLayoutManager(TVShowFragment.this.getActivity(), LinearLayoutManager.VERTICAL, false));
 
         getPopularTVShows();
         getTVShowsAiringToday();
         getTopRatedTVShows();
 
-        textViewTVShows.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(), TVShowActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override
     public void onCategoryClick(MovieResponse movieResponse) {
-        Log.d("TAG", "onCategoryClick: " + movieResponse.getTitle());
 
         Intent intent = new Intent(TVShowFragment.this.getContext(), MovieDetailActivity.class);
 

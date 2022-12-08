@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_user_profile_backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        android:src="@drawable/movie_backdrop"
+        app:layout_constraintBottom_toTopOf="@id/guideline_user_profile_guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_banner_bottom"
+        app:layout_constraintBottom_toTopOf="@id/guideline_user_profile_guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_user_profile_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle_imageview_user_profile_user_profile"
+        android:layout_width="@dimen/user_avatar_width_size_400"
+        android:layout_height="@dimen/user_avatar_height_size_400"
+        android:src="@drawable/user_avatar_holder"
+        app:civ_border_color="@color/color_primary_30"
+        app:civ_border_overlay="false"
+        app:civ_border_width="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_user_profile_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_user_profile_guideline" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_user_profile_user_name"
+        style="@style/WhiteText.Bold.150"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_padding"
+        android:maxWidth="200dp"
+        android:text="Nguyen Anh Duc"
+        app:layout_constraintEnd_toEndOf="@id/circle_imageview_user_profile_user_profile"
+        app:layout_constraintStart_toStartOf="@id/circle_imageview_user_profile_user_profile"
+        app:layout_constraintTop_toBottomOf="@id/circle_imageview_user_profile_user_profile" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_user_profile_user_email"
+        style="@style/WhiteText.Italic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_padding_50"
+        android:maxWidth="200dp"
+        android:text="aduc8386@gmail.com"
+        android:textColor="@color/white_80"
+        app:layout_constraintEnd_toEndOf="@id/textview_user_profile_user_name"
+        app:layout_constraintStart_toStartOf="@id/textview_user_profile_user_name"
+        app:layout_constraintTop_toBottomOf="@id/textview_user_profile_user_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

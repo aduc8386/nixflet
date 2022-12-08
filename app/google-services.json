@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "876228585757",
+    "project_id": "movie-app-nixflet",
+    "storage_bucket": "movie-app-nixflet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876228585757:android:63e548b3fa9cc3d3ce99f4",
+        "android_client_info": {
+          "package_name": "dhcnhn.aduc8386.nixflet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876228585757-hvugc2gb33s3sdil9vpqdmj43vk8jffc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDosC9GOZrNzU6Zm0CzdYEfwcqLm23pSZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876228585757-hvugc2gb33s3sdil9vpqdmj43vk8jffc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
