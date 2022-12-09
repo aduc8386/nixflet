@@ -4,13 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-v24/bg_app_bar.xml" value="0.1865" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-v24/bg_banner_bottom.xml" value="0.102" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-v24/bg_banner_starting.xml" value="0.2295" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-xhdpi/bg_big_watch_button.xml" value="0.102" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-xhdpi/bg_login_button.xml" value="0.102" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-xxxhdpi/bg_banner_bottom_black.xml" value="0.169" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable-xxxhdpi/bg_banner_vertical_black.xml" value="0.1" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_banner.xml" value="0.2295" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_banner_vertical.xml" value="0.1" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_progress_bar.xml" value="0.1365" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_rounded_edittext.xml" value="0.2295" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/bg_rounded_movie_avatar.xml" value="0.2295" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/ic_nixflet.xml" value="0.2295" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/ic_nixflet_logo.xml" value="0.158" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/drawable/ic_nixflet_text.xml" value="0.191" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_genre.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_movie.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_movie_detail.xml" value="0.176" />
@@ -19,13 +27,16 @@
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_starting.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_tv_show.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_tv_shows.xml" value="0.16944444444444445" />
-        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/activity_user_profile.xml" value="0.22105263157894736" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_category_select.xml" value="0.22304832713754646" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_loading.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_main.xml" value="0.24615384615384617" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_movie.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_tv_show.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/fragment_tv_shows.xml" value="0.23703703703703705" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_cast.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_category.xml" value="0.152" />
+        <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_category_select.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_movie.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_production_company.xml" value="0.25" />
         <entry key="..\:/Users/aduc8/AndroidStudioProjects/Nixflet/app/src/main/res/layout/item_user_comment.xml" value="0.25" />

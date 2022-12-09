@@ -2,9 +2,10 @@ package dhcnhn.aduc8386.nixflet.controller.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,16 +40,22 @@ import retrofit2.Response;
 public class MainFragment extends Fragment implements CategoryAdapter.OnCategoryClickListener {
 
 
+    private String movieId;
+
     private TextView textViewTVShow;
     private TextView textViewMovie;
+    private TextView textViewCategorySelect;
     private TextView textViewMovieName;
     private ImageView imageViewMoviePoster;
+    private Button buttonMovieInfo;
+    private ProgressBar progressBar;
 
     private RecyclerView recyclerViewListMovie;
 
     private CategoryAdapter movieAdapter;
 
     private List<Category> movies;
+    private ImageView imageViewCategorySelectIcon;
 
 
     public MainFragment() {
@@ -58,14 +65,97 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        movies = new ArrayList<>();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         bindView(view);
+
+        getDataFromApi();
+
+    }
+
+    private void getDataFromApi() {
+        getPopularMovies();
+        getTopRatedMovies();
+        getUpcomingMovies();
+        getNowPlayingMovies();
+        getPopularTVShows();
+        getTVShowsAiringToday();
+        getTopRatedTVShows();
+    }
+
+    private void bindView(View view) {
+        textViewTVShow = view.findViewById(R.id.textview_main_tv_shows);
+        textViewMovie = view.findViewById(R.id.textview_main_movies);
+        textViewMovieName = view.findViewById(R.id.textview_main_movie_name);
+        textViewCategorySelect = view.findViewById(R.id.textview_main_categories);
+        imageViewMoviePoster = view.findViewById(R.id.imageview_main_movie_poster);
+        imageViewCategorySelectIcon = view.findViewById(R.id.imageview_main_dropdown_icon);
+        buttonMovieInfo = view.findViewById(R.id.button_main_info_button);
+        progressBar = view.findViewById(R.id.spin_kit);
+        recyclerViewListMovie = view.findViewById(R.id.recyclerview_main_category_list);
+        progressBar.setVisibility(View.VISIBLE);
+
+        movieAdapter = new CategoryAdapter(movies, this);
+        recyclerViewListMovie.setAdapter(movieAdapter);
+        recyclerViewListMovie.setLayoutManager(new LinearLayoutManager(MainFragment.this.getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        textViewTVShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), TVShowActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        textViewMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), MovieActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonMovieInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainFragment.this.getContext(), MovieDetailActivity.class);
+
+                intent.putExtra(MainActivity.MOVIE_ID, movieId);
+                intent.putExtra(MainActivity.IS_MOVIE, true);
+
+                startActivity(intent);
+            }
+        });
+
+        textViewCategorySelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CategorySelectFragment categorySelectFragment = new CategorySelectFragment();
+                MainFragment.this.getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.fragment_container_main_fragment_category, categorySelectFragment)
+                        .addToBackStack(categorySelectFragment.getClass().getName())
+                        .commit();
+            }
+        });
+
+        imageViewCategorySelectIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CategorySelectFragment categorySelectFragment = new CategorySelectFragment();
+                MainFragment.this.getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.fragment_container_main_fragment_category, categorySelectFragment)
+                        .addToBackStack(categorySelectFragment.getClass().getName())
+                        .commit();
+            }
+        });
 
     }
 
@@ -84,6 +174,7 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
                     Random random = new Random();
                     int ranNum = random.nextInt(result.size());
 
+                    movieId = movieResponses.get(ranNum).getId();
                     textViewMovieName.setText(movieResponses.get(ranNum).getTitle());
                     Glide.with(MainFragment.this.getContext()).
                             load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(ranNum).getPosterPath()))
@@ -94,7 +185,7 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
                     movies.add(new Category("Popular", movieResponses));
 
                     movieAdapter.notifyDataSetChanged();
-
+                    progressBar.setVisibility(View.GONE);
                 }
 
             }
@@ -259,44 +350,6 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Toast.makeText(MainFragment.this.getActivity(), "Fail", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    private void bindView(View view) {
-        textViewTVShow = view.findViewById(R.id.textview_main_tv_shows);
-        textViewMovie = view.findViewById(R.id.textview_main_movies);
-        recyclerViewListMovie = view.findViewById(R.id.recyclerview_main_category_list);
-        textViewMovieName = view.findViewById(R.id.textview_main_movie_name);
-        imageViewMoviePoster = view.findViewById(R.id.imageview_main_movie_poster);
-
-        movies = new ArrayList<>();
-        movieAdapter = new CategoryAdapter(movies, this);
-        recyclerViewListMovie.setAdapter(movieAdapter);
-        recyclerViewListMovie.setLayoutManager(new LinearLayoutManager(MainFragment.this.getActivity(), LinearLayoutManager.VERTICAL, false));
-
-        getPopularMovies();
-        getTopRatedMovies();
-        getUpcomingMovies();
-        getNowPlayingMovies();
-        getPopularTVShows();
-        getTVShowsAiringToday();
-        getTopRatedTVShows();
-
-        textViewTVShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(), TVShowActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        textViewMovie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(), MovieActivity.class);
-                startActivity(intent);
             }
         });
 

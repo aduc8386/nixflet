@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +29,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private Button buttonLogin;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,11 +43,13 @@ public class SignInActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.edittext_sign_in_email);
         editTextPassword = findViewById(R.id.edittext_sign_in_password);
         buttonLogin = findViewById(R.id.button_sign_in_login_button);
+        progressBar = findViewById(R.id.spin_kit);
+
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                progressBar.setVisibility(View.VISIBLE);
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
 
@@ -58,6 +62,7 @@ public class SignInActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 User user = snapshot.getValue(User.class);
                                 SharedPreferencesHelper.setUser(user);
+                                progressBar.setVisibility(View.GONE);
                             }
 
                             @Override

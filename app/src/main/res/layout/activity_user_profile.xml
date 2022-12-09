@@ -11,8 +11,8 @@
         android:layout_height="0dp"
         android:alpha="0.6"
         android:scaleType="centerCrop"
-        android:src="@drawable/movie_backdrop"
-        app:layout_constraintBottom_toTopOf="@id/guideline_user_profile_guideline"
+        android:src="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_user_profile_guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,7 +49,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/app_padding"
         android:maxWidth="200dp"
-        android:text="Nguyen Anh Duc"
         app:layout_constraintEnd_toEndOf="@id/circle_imageview_user_profile_user_profile"
         app:layout_constraintStart_toStartOf="@id/circle_imageview_user_profile_user_profile"
         app:layout_constraintTop_toBottomOf="@id/circle_imageview_user_profile_user_profile" />
@@ -59,12 +58,107 @@
         style="@style/WhiteText.Italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/app_padding_50"
         android:maxWidth="200dp"
-        android:text="aduc8386@gmail.com"
-        android:textColor="@color/white_80"
+        android:textColor="@color/white_60"
         app:layout_constraintEnd_toEndOf="@id/textview_user_profile_user_name"
         app:layout_constraintStart_toStartOf="@id/textview_user_profile_user_name"
         app:layout_constraintTop_toBottomOf="@id/textview_user_profile_user_name" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_user_profile_user_name_title"
+        style="@style/WhiteText.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/regular_margin"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:text="@string/full_name_hint"
+        android:textAlignment="textStart"
+        android:textColor="@color/white_60"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_user_profile_user_email" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_user_profile_user_name"
+        style="@style/WhiteText.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-4dp"
+        android:enabled="false"
+        android:paddingBottom="@dimen/app_padding"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@id/textview_user_profile_user_name_title"
+        app:layout_constraintStart_toStartOf="@id/textview_user_profile_user_name_title"
+        app:layout_constraintTop_toBottomOf="@id/textview_user_profile_user_name_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_user_profile_user_email_title"
+        style="@style/WhiteText.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:text="@string/email_hint"
+        android:textAlignment="textStart"
+        android:textColor="@color/white_60"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/textview_user_profile_user_name_title"
+        app:layout_constraintStart_toStartOf="@id/textview_user_profile_user_name_title"
+        app:layout_constraintTop_toBottomOf="@id/edittext_user_profile_user_name" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_user_profile_user_email"
+        style="@style/WhiteText.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-4dp"
+        android:enabled="false"
+        android:paddingBottom="@dimen/app_padding"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@id/textview_user_profile_user_email_title"
+        app:layout_constraintStart_toStartOf="@id/textview_user_profile_user_email_title"
+        app:layout_constraintTop_toBottomOf="@id/textview_user_profile_user_email_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_user_profile_user_password_title"
+        style="@style/WhiteText.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin"
+        android:text="@string/password_hint"
+        android:textAlignment="textStart"
+        android:textColor="@color/white_60"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/textview_user_profile_user_email_title"
+        app:layout_constraintStart_toStartOf="@id/textview_user_profile_user_email_title"
+        app:layout_constraintTop_toBottomOf="@id/edittext_user_profile_user_email" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_user_profile_user_password"
+        style="@style/WhiteText.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-4dp"
+        android:enabled="false"
+        android:paddingBottom="@dimen/app_padding"
+        android:text="**********"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@id/textview_user_profile_user_password_title"
+        app:layout_constraintStart_toStartOf="@id/textview_user_profile_user_password_title"
+        app:layout_constraintTop_toBottomOf="@id/textview_user_profile_user_password_title" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_user_profile_logout_button"
+        style="@style/WhiteText.Bold.125"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_login_button"
+        android:padding="@dimen/app_padding"
+        android:text="Logout"
+        android:layout_marginBottom="@dimen/regular_margin"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="@dimen/app_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,9 +8,12 @@ public class Genre {
     @SerializedName("name")
     private String name;
 
-    public Genre(String id, String name) {
+    private boolean isMovie;
+
+    public Genre(String id, String name, boolean isMovie) {
         this.id = id;
         this.name = name;
+        this.isMovie = isMovie;
     }
 
     public String getId() {
@@ -19,5 +22,13 @@ public class Genre {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isMovie() {
+        return isMovie;
+    }
+
+    public void setMovie(boolean movie) {
+        isMovie = movie;
     }
 }

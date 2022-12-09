@@ -1,5 +1,6 @@
 package dhcnhn.aduc8386.nixflet.controller.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,6 +49,14 @@ public class TVShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        imageViewProfileManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TVShowActivity.this, UserProfileActivity.class);
+                startActivity(intent);
             }
         });
     }

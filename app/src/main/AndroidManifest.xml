@@ -41,6 +41,8 @@
         <activity android:name=".controller.activity.SignUpActivity" />
         <activity android:name=".controller.activity.TVShowActivity" />
         <activity android:name=".controller.activity.MovieActivity" />
+        <activity android:name=".controller.activity.GenreActivity" />
+        <activity android:name=".controller.activity.UserProfileActivity" />
     </application>
 
 </manifest>

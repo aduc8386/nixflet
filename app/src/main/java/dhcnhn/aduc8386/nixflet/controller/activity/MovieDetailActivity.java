@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,6 @@ import dhcnhn.aduc8386.nixflet.controller.adapter.CastAdapter;
 import dhcnhn.aduc8386.nixflet.controller.adapter.MovieAdapter;
 import dhcnhn.aduc8386.nixflet.controller.adapter.UserCommentAdapter;
 import dhcnhn.aduc8386.nixflet.controller.adapter.VideoAdapter;
-import dhcnhn.aduc8386.nixflet.controller.fragment.MainFragment;
 import dhcnhn.aduc8386.nixflet.helper.FirebaseDatabaseHelper;
 import dhcnhn.aduc8386.nixflet.helper.SharedPreferencesHelper;
 import dhcnhn.aduc8386.nixflet.model.Cast;
@@ -60,12 +60,12 @@ public class MovieDetailActivity extends AppCompatActivity {
     private RecyclerView recyclerViewVideo;
     private RecyclerView recyclerRecommendations;
     private RecyclerView recyclerUserComment;
+    private ProgressBar progressBar;
 
     private CastAdapter castAdapter;
     private MovieAdapter movieAdapter;
     private VideoAdapter videoAdapter;
     private UserCommentAdapter userCommentAdapter;
-
 
     private List<MovieResponse> recommendations;
     private List<Cast> casts;
@@ -101,6 +101,9 @@ public class MovieDetailActivity extends AppCompatActivity {
         recyclerViewVideo = findViewById(R.id.recyclerview_movie_detail_video);
         recyclerRecommendations = findViewById(R.id.recyclerview_movie_detail_recommendation);
         recyclerUserComment = findViewById(R.id.recyclerview_movie_detail_user_comments);
+        progressBar = findViewById(R.id.spin_kit);
+        progressBar.setVisibility(View.VISIBLE);
+
         casts = new ArrayList<>();
         recommendations = new ArrayList<>();
 
@@ -149,9 +152,9 @@ public class MovieDetailActivity extends AppCompatActivity {
                     userComments.add(userComment);
                 }
 
-                for(int i = 0; i < userComments.size(); i++) {
-                    for(int j = i + 1; j < userComments.size()-1; j++) {
-                        if(userComments.get(i).getId() > userComments.get(j).getId()) {
+                for (int i = 0; i < userComments.size(); i++) {
+                    for (int j = i + 1; j < userComments.size() - 1; j++) {
+                        if (userComments.get(i).getId() > userComments.get(j).getId()) {
                             UserComment temp = userComments.get(i);
                             userComments.set(i, userComments.get(j));
                             userComments.set(j, temp);
@@ -203,6 +206,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                         }
                     }
 
+
                     getMovieCast();
                     getMovieRecommendations();
 
@@ -211,7 +215,6 @@ public class MovieDetailActivity extends AppCompatActivity {
                     videoAdapter = new VideoAdapter(movieDetail.getVideos().getVideos());
                     recyclerViewVideo.setAdapter(videoAdapter);
                     recyclerViewVideo.setLayoutManager(new LinearLayoutManager(MovieDetailActivity.this, LinearLayoutManager.HORIZONTAL, false));
-
                 }
             }
 
@@ -277,6 +280,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                             genres.append(String.format("%s", movieDetail.getGenres()[i].getName()));
                         }
                     }
+
 
                     getTVShowCast();
                     getTVShowRecommendations();
@@ -347,6 +351,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
                     recyclerRecommendations.setAdapter(movieAdapter);
                     recyclerRecommendations.setLayoutManager(new LinearLayoutManager(MovieDetailActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                    progressBar.setVisibility(View.GONE);
                 }
             }
 
@@ -382,6 +387,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
                     recyclerRecommendations.setAdapter(movieAdapter);
                     recyclerRecommendations.setLayoutManager(new LinearLayoutManager(MovieDetailActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                    progressBar.setVisibility(View.GONE);
                 }
             }
 

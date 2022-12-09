@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,14 +38,19 @@ import retrofit2.Response;
 
 public class MovieFragment extends Fragment implements CategoryAdapter.OnCategoryClickListener {
 
+    private String movieId;
+
     private TextView textViewMovieName;
+    private TextView textViewCategorySelect;
     private ImageView imageViewMoviePoster;
+    private ImageView imageViewCategorySelectIcon;
+    private Button buttonMovieInfo;
 
     private RecyclerView recyclerViewListMovie;
-
     private CategoryAdapter movieAdapter;
 
     private List<Category> movies;
+    private ProgressBar progressBar;
 
 
     public MovieFragment() {
@@ -53,7 +60,11 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        movies = new ArrayList<>();
+        getPopularMovies();
+        getTopRatedMovies();
+        getUpcomingMovies();
+        getNowPlayingMovies();
     }
 
     @Override
@@ -61,6 +72,59 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
         super.onViewCreated(view, savedInstanceState);
 
         bindView(view);
+    }
+
+    private void bindView(View view) {
+        textViewMovieName = view.findViewById(R.id.textview_movie_movie_name);
+        textViewCategorySelect = view.findViewById(R.id.textview_movie_categories);
+        imageViewMoviePoster = view.findViewById(R.id.imageview_movie_movie_poster);
+        imageViewCategorySelectIcon = view.findViewById(R.id.imageview_movie_dropdown_icon);
+        buttonMovieInfo = view.findViewById(R.id.button_movie_info_button);
+        recyclerViewListMovie = view.findViewById(R.id.recyclerview_movie_category_list);
+        progressBar = view.findViewById(R.id.spin_kit);
+        progressBar.setVisibility(View.VISIBLE);
+
+        movieAdapter = new CategoryAdapter(movies, this);
+        recyclerViewListMovie.setAdapter(movieAdapter);
+        recyclerViewListMovie.setLayoutManager(new LinearLayoutManager(MovieFragment.this.getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        buttonMovieInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MovieFragment.this.getContext(), MovieDetailActivity.class);
+
+                intent.putExtra(MainActivity.MOVIE_ID, movieId);
+                intent.putExtra(MainActivity.IS_MOVIE, true);
+
+                startActivity(intent);
+            }
+        });
+
+        textViewCategorySelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CategorySelectFragment categorySelectFragment = new CategorySelectFragment();
+                MovieFragment.this.getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.fragment_container_movie_fragment_category, categorySelectFragment)
+                        .addToBackStack(categorySelectFragment.getClass().getName())
+                        .commit();
+            }
+        });
+
+        imageViewCategorySelectIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CategorySelectFragment categorySelectFragment = new CategorySelectFragment();
+                MovieFragment.this.getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.fragment_container_movie_fragment_category, categorySelectFragment)
+                        .addToBackStack(categorySelectFragment.getClass().getName())
+                        .commit();
+            }
+        });
 
     }
 
@@ -78,7 +142,7 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
 
                     Random random = new Random();
                     int ranNum = random.nextInt(result.size());
-
+                    movieId = movieResponses.get(ranNum).getId();
                     textViewMovieName.setText(movieResponses.get(ranNum).getTitle());
                     Glide.with(MovieFragment.this.getContext()).
                             load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(ranNum).getPosterPath()))
@@ -89,7 +153,7 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
                     movies.add(new Category("Popular", movieResponses));
 
                     movieAdapter.notifyDataSetChanged();
-
+                    progressBar.setVisibility(View.GONE);
                 }
 
             }
@@ -178,23 +242,6 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
                 Toast.makeText(MovieFragment.this.getActivity(), "Fail", Toast.LENGTH_SHORT).show();
             }
         });
-
-    }
-
-    private void bindView(View view) {
-        recyclerViewListMovie = view.findViewById(R.id.recyclerview_movie_category_list);
-        textViewMovieName = view.findViewById(R.id.textview_movie_movie_name);
-        imageViewMoviePoster = view.findViewById(R.id.imageview_movie_movie_poster);
-
-        movies = new ArrayList<>();
-        movieAdapter = new CategoryAdapter(movies, this);
-        recyclerViewListMovie.setAdapter(movieAdapter);
-        recyclerViewListMovie.setLayoutManager(new LinearLayoutManager(MovieFragment.this.getActivity(), LinearLayoutManager.VERTICAL, false));
-
-        getPopularMovies();
-        getTopRatedMovies();
-        getUpcomingMovies();
-        getNowPlayingMovies();
 
     }
 

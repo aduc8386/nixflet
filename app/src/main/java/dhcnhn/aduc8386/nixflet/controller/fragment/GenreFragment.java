@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 
 import dhcnhn.aduc8386.nixflet.R;
+import dhcnhn.aduc8386.nixflet.controller.activity.GenreActivity;
 import dhcnhn.aduc8386.nixflet.controller.activity.MainActivity;
 import dhcnhn.aduc8386.nixflet.controller.activity.MovieDetailActivity;
 import dhcnhn.aduc8386.nixflet.controller.adapter.CategoryAdapter;
@@ -35,64 +36,76 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TVShowFragment extends Fragment implements CategoryAdapter.OnCategoryClickListener {
+public class GenreFragment extends Fragment implements CategoryAdapter.OnCategoryClickListener {
 
+    private String genreName;
+    private String genreId;
     private String movieId;
+    private boolean isMovie;
 
-    private TextView textViewTVShowName;
-    private ImageView imageViewTVShowPoster;
+    private TextView textViewMovieName;
+    private TextView textViewCategorySelect;
+    private ImageView imageViewMoviePoster;
+    private ImageView imageViewCategorySelectIcon;
     private Button buttonMovieInfo;
 
-    private RecyclerView recyclerViewListTVShow;
+    private RecyclerView recyclerViewListMovie;
+    private CategoryAdapter movieAdapter;
 
-    private CategoryAdapter tvShowAdapter;
-
-    private List<Category> tvShows;
-    private TextView textViewCategorySelect;
-    private ImageView imageViewCategorySelectIcon;
+    private List<Category> movies;
     private ProgressBar progressBar;
 
-    public TVShowFragment() {
+
+    public GenreFragment() {
         super(R.layout.fragment_movie);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tvShows = new ArrayList<>();
-        getPopularTVShows();
-        getTVShowsAiringToday();
-        getTopRatedTVShows();
+
+        if (getArguments() != null) {
+            genreName = getArguments().getString(GenreActivity.GENRE_NAME);
+            genreId = getArguments().getString(GenreActivity.GENRE_ID);
+            isMovie = getArguments().getBoolean(GenreActivity.IS_MOVIE);
+        }
+
+        movies = new ArrayList<>();
+        if (isMovie) {
+            getMoviesByGenre(genreId);
+        } else {
+            getTVShowsByGenre(genreId);
+        }
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView(view);
-
     }
 
     private void bindView(View view) {
+        textViewMovieName = view.findViewById(R.id.textview_movie_movie_name);
         textViewCategorySelect = view.findViewById(R.id.textview_movie_categories);
-        textViewTVShowName = view.findViewById(R.id.textview_movie_movie_name);
-        imageViewTVShowPoster = view.findViewById(R.id.imageview_movie_movie_poster);
+        imageViewMoviePoster = view.findViewById(R.id.imageview_movie_movie_poster);
         imageViewCategorySelectIcon = view.findViewById(R.id.imageview_movie_dropdown_icon);
         buttonMovieInfo = view.findViewById(R.id.button_movie_info_button);
-        recyclerViewListTVShow = view.findViewById(R.id.recyclerview_movie_category_list);
+        recyclerViewListMovie = view.findViewById(R.id.recyclerview_movie_category_list);
         progressBar = view.findViewById(R.id.spin_kit);
         progressBar.setVisibility(View.VISIBLE);
 
-        tvShowAdapter = new CategoryAdapter(tvShows, this);
-        recyclerViewListTVShow.setAdapter(tvShowAdapter);
-        recyclerViewListTVShow.setLayoutManager(new LinearLayoutManager(TVShowFragment.this.getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        movieAdapter = new CategoryAdapter(movies, this);
+        recyclerViewListMovie.setAdapter(movieAdapter);
+        recyclerViewListMovie.setLayoutManager(new LinearLayoutManager(GenreFragment.this.getActivity(), LinearLayoutManager.VERTICAL, false));
 
         buttonMovieInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TVShowFragment.this.getContext(), MovieDetailActivity.class);
+                Intent intent = new Intent(GenreFragment.this.getContext(), MovieDetailActivity.class);
 
                 intent.putExtra(MainActivity.MOVIE_ID, movieId);
-                intent.putExtra(MainActivity.IS_MOVIE, false);
+                intent.putExtra(MainActivity.IS_MOVIE, true);
 
                 startActivity(intent);
             }
@@ -102,10 +115,10 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
             @Override
             public void onClick(View v) {
                 CategorySelectFragment categorySelectFragment = new CategorySelectFragment();
-                TVShowFragment.this.getActivity()
+                GenreFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_tv_show_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_genre_fragment_category, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }
@@ -115,46 +128,19 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
             @Override
             public void onClick(View v) {
                 CategorySelectFragment categorySelectFragment = new CategorySelectFragment();
-                TVShowFragment.this.getActivity()
+                GenreFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_tv_show_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_genre_fragment_category, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }
         });
 
-
     }
 
-    void getTVShowsAiringToday() {
-        TMDBService.init().getTVShowsAiringToday().enqueue(new Callback<JsonObject>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response.body() != null && response.isSuccessful()) {
-                    JsonArray result = response.body().getAsJsonArray("results");
-                    List<MovieResponse> movieResponses = new ArrayList<>();
-                    Gson gson = new Gson();
-                    for (int i = 0; i < result.size(); i++) {
-                        movieResponses.add(gson.fromJson(result.get(i), MovieResponse.class));
-                    }
-
-                    tvShows.add(new Category("TV Shows Today", movieResponses));
-                    tvShowAdapter.notifyDataSetChanged();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(TVShowFragment.this.getActivity(), "Fail", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    void getPopularTVShows() {
-        TMDBService.init().getPopularTVShows().enqueue(new Callback<JsonObject>() {
+    void getTVShowsByGenre(String genreId) {
+        TMDBService.init().getTVShowByGenre(genreId).enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if (response.body() != null && response.isSuccessful()) {
@@ -168,16 +154,16 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
                     Random random = new Random();
                     int ranNum = random.nextInt(result.size());
                     movieId = movieResponses.get(ranNum).getId();
-
-                    textViewTVShowName.setText(movieResponses.get(ranNum).getName());
-                    Glide.with(TVShowFragment.this.getContext()).
+                    textViewMovieName.setText(movieResponses.get(ranNum).getTitle());
+                    Glide.with(GenreFragment.this.getContext()).
                             load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(ranNum).getPosterPath()))
                             .centerCrop()
                             .error(R.drawable.ic_nixflet_text)
-                            .into(imageViewTVShowPoster);
+                            .into(imageViewMoviePoster);
 
-                    tvShows.add(new Category("Popular TV Shows", movieResponses));
-                    tvShowAdapter.notifyDataSetChanged();
+                    movies.add(new Category(genreName, movieResponses));
+
+                    movieAdapter.notifyDataSetChanged();
                     progressBar.setVisibility(View.GONE);
                 }
 
@@ -185,14 +171,15 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(TVShowFragment.this.getActivity(), "Fail", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GenreFragment.this.getActivity(), "Fail", Toast.LENGTH_SHORT).show();
             }
         });
 
+
     }
 
-    void getTopRatedTVShows() {
-        TMDBService.init().getTopRatedTVShows().enqueue(new Callback<JsonObject>() {
+    void getMoviesByGenre(String genreId) {
+        TMDBService.init().getMovieByGenre(genreId).enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if (response.body() != null && response.isSuccessful()) {
@@ -203,15 +190,28 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
                         movieResponses.add(gson.fromJson(result.get(i), MovieResponse.class));
                     }
 
-                    tvShows.add(new Category("Top Rated TV Shows", movieResponses));
-                    tvShowAdapter.notifyDataSetChanged();
+                    Random random = new Random();
+                    int ranNum = random.nextInt(result.size());
+                    movieId = movieResponses.get(ranNum).getId();
+                    textViewMovieName.setText(movieResponses.get(ranNum).getTitle());
+                    Glide.with(GenreFragment.this.getContext()).
+                            load(String.format("https://image.tmdb.org/t/p/original/%s", movieResponses.get(ranNum).getPosterPath()))
+                            .centerCrop()
+                            .error(R.drawable.ic_nixflet_text)
+                            .into(imageViewMoviePoster);
+
+                    movies.add(new Category(genreName, movieResponses));
+
+                    movieAdapter.notifyDataSetChanged();
+                    progressBar.setVisibility(View.GONE);
+
                 }
 
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(TVShowFragment.this.getActivity(), "Fail", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GenreFragment.this.getActivity(), "Fail", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -220,10 +220,10 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
     @Override
     public void onCategoryClick(MovieResponse movieResponse) {
 
-        Intent intent = new Intent(TVShowFragment.this.getContext(), MovieDetailActivity.class);
+        Intent intent = new Intent(GenreFragment.this.getContext(), MovieDetailActivity.class);
 
         intent.putExtra(MainActivity.MOVIE_ID, movieResponse.getId());
-        intent.putExtra(MainActivity.IS_MOVIE, false);
+        intent.putExtra(MainActivity.IS_MOVIE, true);
 
         startActivity(intent);
     }

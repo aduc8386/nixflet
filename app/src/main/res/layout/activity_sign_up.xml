@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
+
+
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -52,7 +54,7 @@
             android:inputType="textEmailAddress"
             android:padding="@dimen/app_padding"
             android:textAlignment="textStart"
-            android:textColorHint="@color/white_80"
+            android:textColorHint="@color/white_60"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/circle_imageview_sign_up_user_profile" />
@@ -69,7 +71,7 @@
             android:inputType="textEmailAddress"
             android:padding="@dimen/app_padding"
             android:textAlignment="textStart"
-            android:textColorHint="@color/white_80"
+            android:textColorHint="@color/white_60"
             app:layout_constraintEnd_toEndOf="@id/edittext_sign_up_user_name"
             app:layout_constraintStart_toStartOf="@id/edittext_sign_up_user_name"
             app:layout_constraintTop_toBottomOf="@id/edittext_sign_up_user_name" />
@@ -87,7 +89,7 @@
             android:inputType="textPassword"
             android:padding="@dimen/app_padding"
             android:textAlignment="textStart"
-            android:textColorHint="@color/white_80"
+            android:textColorHint="@color/white_60"
             app:layout_constraintEnd_toEndOf="@id/edittext_sign_up_email"
             app:layout_constraintStart_toStartOf="@id/edittext_sign_up_email"
             app:layout_constraintTop_toBottomOf="@id/edittext_sign_up_email" />
@@ -104,7 +106,7 @@
             android:inputType="textPassword"
             android:padding="@dimen/app_padding"
             android:textAlignment="textStart"
-            android:textColorHint="@color/white_80"
+            android:textColorHint="@color/white_60"
             app:layout_constraintEnd_toEndOf="@id/edittext_sign_up_password"
             app:layout_constraintStart_toStartOf="@id/edittext_sign_up_password"
             app:layout_constraintTop_toBottomOf="@id/edittext_sign_up_password" />
@@ -126,5 +128,17 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Wave"
+        android:layout_width="@dimen/regular_icon_size_200"
+        android:layout_height="@dimen/regular_icon_size_200"
+        app:SpinKit_Color="@color/white"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
@@ -17,29 +18,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
-import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dhcnhn.aduc8386.nixflet.R;
 import dhcnhn.aduc8386.nixflet.helper.FirebaseAuthHelper;
 import dhcnhn.aduc8386.nixflet.helper.FirebaseDatabaseHelper;
 import dhcnhn.aduc8386.nixflet.helper.FirebaseStorageHelper;
-import dhcnhn.aduc8386.nixflet.helper.SharedPreferencesHelper;
 import dhcnhn.aduc8386.nixflet.model.User;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -52,6 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText editTextConfirmPassword;
     private Button buttonRegister;
     private CircleImageView circleImageviewProfile;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,10 +61,13 @@ public class SignUpActivity extends AppCompatActivity {
         editTextConfirmPassword = findViewById(R.id.edittext_sign_up_confirm_password);
         buttonRegister = findViewById(R.id.button_sign_up_register_button);
         circleImageviewProfile = findViewById(R.id.circle_imageview_sign_up_user_profile);
+        progressBar = findViewById(R.id.spin_kit);
+
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
                 String fullName = editTextFullName.getText().toString().trim();
                 String email = editTextEmail.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
@@ -120,8 +116,6 @@ public class SignUpActivity extends AppCompatActivity {
         FirebaseAuthHelper.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
-
                 if (task.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this, "Sign up successful", Toast.LENGTH_SHORT).show();
 
@@ -161,7 +155,7 @@ public class SignUpActivity extends AppCompatActivity {
                 FirebaseDatabaseHelper.getUserReference().child(user.getId()).setValue(user, (error, ref) -> {
                     FirebaseStorageHelper.setProfilePicture(Uri.parse(user.getProfilePicture()));
                     Log.d("TAG", "onComplete: user data upload successful");
-                    Toast.makeText(SignUpActivity.this, "Login to continue", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

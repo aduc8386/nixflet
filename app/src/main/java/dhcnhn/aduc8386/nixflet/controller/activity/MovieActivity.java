@@ -1,5 +1,6 @@
 package dhcnhn.aduc8386.nixflet.controller.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,6 +51,13 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
 
+        imageViewProfileManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MovieActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

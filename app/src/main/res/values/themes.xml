@@ -14,9 +14,9 @@
 <!--        <item name="android:windowTranslucentStatus">true</item>-->
 <!--        <item name="android:windowTranslucentNavigation">true</item>-->
         <!-- Customize your theme here. -->
-        <item name="colorControlNormal">@color/white_80</item>
-        <item name="colorControlActivated">@color/white_80</item>
-        <item name="colorControlHighlight">@color/white_80</item>
+        <item name="colorControlNormal">@color/white_60</item>
+        <item name="colorControlActivated">@color/white_60</item>
+        <item name="colorControlHighlight">@color/white_60</item>
     </style>
 
     <style name="WhiteText.Normal" parent="TextAppearance.AppCompat">
@@ -42,6 +42,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="WhiteText.Bold.75" parent="WhiteText.Bold">
+        <item name="android:textSize">@dimen/regular_font_size_75</item>
+    </style>
+
     <style name="WhiteText.Bold.125" parent="WhiteText.Bold">
         <item name="android:textSize">@dimen/regular_font_size_125</item>
     </style>
@@ -64,7 +68,7 @@
 
     <style name="WhiteOpacity.Italic.75" parent="WhiteText.Normal">
         <item name="android:textSize">@dimen/regular_font_size_75</item>
-        <item name="android:textColor">@color/white_80</item>
+        <item name="android:textColor">@color/white_60</item>
         <item name="android:textStyle">italic</item>
     </style>
 </resources>

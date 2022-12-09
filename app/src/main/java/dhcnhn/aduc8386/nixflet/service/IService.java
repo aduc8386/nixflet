@@ -2,10 +2,12 @@ package dhcnhn.aduc8386.nixflet.service;
 
 import com.google.gson.JsonObject;
 
+import dhcnhn.aduc8386.nixflet.model.Genre;
 import dhcnhn.aduc8386.nixflet.model.MovieDetail;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface IService {
 
@@ -48,4 +50,15 @@ public interface IService {
     @GET("tv/{id}/credits?api_key=09da4019f7e387773b013fa80918d219&language=en-US")
     Call<JsonObject> getTVShowCast(@Path("id") String movieId);
 
+    @GET("genre/movie/list?api_key=09da4019f7e387773b013fa80918d219&language=en-US")
+    Call<JsonObject> getMovieGenres();
+
+    @GET("genre/tv/list?api_key=09da4019f7e387773b013fa80918d219&language=en-US")
+    Call<JsonObject> getTVGenres();
+
+    @GET("https://api.themoviedb.org/3/discover/movie?api_key=09da4019f7e387773b013fa80918d219&language=en-US")
+    Call<JsonObject> getMovieByGenre(@Query("with_genres") String genreId);
+
+    @GET("https://api.themoviedb.org/3/discover/tv?api_key=09da4019f7e387773b013fa80918d219&language=en-US")
+    Call<JsonObject> getTVShowByGenre(@Query("with_genres") String genreId);
 }

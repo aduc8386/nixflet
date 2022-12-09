@@ -13,6 +13,7 @@
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="overview">Overview</string>
-    <string name="copyright">Copyright© by Group 6 - HaUI</string>
+    <string name="copyright">Ⓒ Copyright by Group 6 - HaUI</string>
     <string name="movie">Movie</string>
+    <string name="full_name_hint">Full Name</string>
 </resources>
