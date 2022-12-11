@@ -19,6 +19,11 @@
         <item name="colorControlHighlight">@color/white_60</item>
     </style>
 
+    <style name="LoadingDialog" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
     <style name="WhiteText.Normal" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/regular_font_size</item>

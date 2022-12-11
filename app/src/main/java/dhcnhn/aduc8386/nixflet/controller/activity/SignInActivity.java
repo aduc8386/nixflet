@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import dhcnhn.aduc8386.nixflet.R;
+import dhcnhn.aduc8386.nixflet.controller.fragment.LoadingDialogFragment;
 import dhcnhn.aduc8386.nixflet.helper.FirebaseAuthHelper;
 import dhcnhn.aduc8386.nixflet.helper.FirebaseDatabaseHelper;
 import dhcnhn.aduc8386.nixflet.helper.SharedPreferencesHelper;
@@ -29,7 +30,8 @@ public class SignInActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private Button buttonLogin;
-    private ProgressBar progressBar;
+
+    private LoadingDialogFragment loadingDialogFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,39 +45,54 @@ public class SignInActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.edittext_sign_in_email);
         editTextPassword = findViewById(R.id.edittext_sign_in_password);
         buttonLogin = findViewById(R.id.button_sign_in_login_button);
-        progressBar = findViewById(R.id.spin_kit);
+        loadingDialogFragment = new LoadingDialogFragment();
 
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                String email = editTextEmail.getText().toString();
-                String password = editTextPassword.getText().toString();
+                String email = editTextEmail.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
 
+                if (email.isEmpty()) {
+                    editTextEmail.setError("Email is required");
+                    editTextEmail.requestFocus();
+                    return;
+                }
+                if (password.isEmpty()) {
+                    editTextPassword.setError("Password is required");
+                    editTextPassword.requestFocus();
+                    return;
+                }
+                loadingDialogFragment.show(SignInActivity.this.getSupportFragmentManager(), LoadingDialogFragment.TAG);
                 FirebaseAuthHelper.getInstance().signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        FirebaseDatabaseHelper.getUserReference().child(FirebaseAuthHelper.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                             @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                User user = snapshot.getValue(User.class);
-                                SharedPreferencesHelper.setUser(user);
-                                progressBar.setVisibility(View.GONE);
-                            }
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(FirebaseAuthHelper.getCurrentUser() != null) {
+                                    FirebaseDatabaseHelper.getUserReference().child(FirebaseAuthHelper.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            User user = snapshot.getValue(User.class);
+                                            SharedPreferencesHelper.setUser(user);
+                                            loadingDialogFragment.dismiss();
+                                        }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
+                                        }
+                                    });
+                                    Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(SignInActivity.this, "Incorrect Email or Password", Toast.LENGTH_SHORT).show();
+                                }
+                                
                             }
                         });
-                        Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
             }
         });
     }

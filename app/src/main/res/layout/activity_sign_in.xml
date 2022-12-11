@@ -92,16 +92,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/spin_kit"
-        style="@style/SpinKitView.Wave"
-        android:layout_width="@dimen/regular_icon_size_200"
-        android:layout_height="@dimen/regular_icon_size_200"
-        android:visibility="gone"
-        app:SpinKit_Color="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

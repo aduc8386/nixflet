@@ -31,6 +31,7 @@ import dhcnhn.aduc8386.nixflet.controller.adapter.CastAdapter;
 import dhcnhn.aduc8386.nixflet.controller.adapter.MovieAdapter;
 import dhcnhn.aduc8386.nixflet.controller.adapter.UserCommentAdapter;
 import dhcnhn.aduc8386.nixflet.controller.adapter.VideoAdapter;
+import dhcnhn.aduc8386.nixflet.controller.fragment.LoadingDialogFragment;
 import dhcnhn.aduc8386.nixflet.helper.FirebaseDatabaseHelper;
 import dhcnhn.aduc8386.nixflet.helper.SharedPreferencesHelper;
 import dhcnhn.aduc8386.nixflet.model.Cast;
@@ -60,12 +61,12 @@ public class MovieDetailActivity extends AppCompatActivity {
     private RecyclerView recyclerViewVideo;
     private RecyclerView recyclerRecommendations;
     private RecyclerView recyclerUserComment;
-    private ProgressBar progressBar;
 
     private CastAdapter castAdapter;
     private MovieAdapter movieAdapter;
     private VideoAdapter videoAdapter;
     private UserCommentAdapter userCommentAdapter;
+    private LoadingDialogFragment loadingDialogFragment;
 
     private List<MovieResponse> recommendations;
     private List<Cast> casts;
@@ -101,8 +102,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         recyclerViewVideo = findViewById(R.id.recyclerview_movie_detail_video);
         recyclerRecommendations = findViewById(R.id.recyclerview_movie_detail_recommendation);
         recyclerUserComment = findViewById(R.id.recyclerview_movie_detail_user_comments);
-        progressBar = findViewById(R.id.spin_kit);
-        progressBar.setVisibility(View.VISIBLE);
+        loadingDialogFragment = new LoadingDialogFragment();
+        loadingDialogFragment.show(this.getSupportFragmentManager(), LoadingDialogFragment.TAG);
 
         casts = new ArrayList<>();
         recommendations = new ArrayList<>();
@@ -351,7 +352,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
                     recyclerRecommendations.setAdapter(movieAdapter);
                     recyclerRecommendations.setLayoutManager(new LinearLayoutManager(MovieDetailActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                    progressBar.setVisibility(View.GONE);
+                    loadingDialogFragment.dismiss();
                 }
             }
 
@@ -387,7 +388,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
                     recyclerRecommendations.setAdapter(movieAdapter);
                     recyclerRecommendations.setLayoutManager(new LinearLayoutManager(MovieDetailActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                    progressBar.setVisibility(View.GONE);
+                    loadingDialogFragment.dismiss();
                 }
             }
 

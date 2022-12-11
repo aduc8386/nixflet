@@ -11,19 +11,6 @@
         android:layout_height="wrap_content"
         android:background="@color/black">
 
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:id="@+id/spin_kit"
-            style="@style/SpinKitView.Wave"
-            android:layout_width="@dimen/regular_icon_size_200"
-            android:layout_height="@dimen/regular_icon_size_200"
-            android:visibility="gone"
-            app:SpinKit_Color="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/guideline_movie_guideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageview_movie_movie_poster"
             android:layout_width="match_parent"

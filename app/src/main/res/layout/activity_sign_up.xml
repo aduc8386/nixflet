@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-
-
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -26,7 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circle_imageview_sign_up_user_profile"
             android:layout_width="@dimen/user_avatar_width_size_300"
@@ -39,7 +36,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edittext_sign_up_user_name"
@@ -128,17 +124,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/spin_kit"
-        style="@style/SpinKitView.Wave"
-        android:layout_width="@dimen/regular_icon_size_200"
-        android:layout_height="@dimen/regular_icon_size_200"
-        app:SpinKit_Color="@color/white"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

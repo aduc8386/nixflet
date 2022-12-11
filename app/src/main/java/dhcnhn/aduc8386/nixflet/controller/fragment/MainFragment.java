@@ -47,15 +47,14 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
     private TextView textViewCategorySelect;
     private TextView textViewMovieName;
     private ImageView imageViewMoviePoster;
+    private ImageView imageViewCategorySelectIcon;
     private Button buttonMovieInfo;
-    private ProgressBar progressBar;
-
     private RecyclerView recyclerViewListMovie;
 
     private CategoryAdapter movieAdapter;
+    private LoadingDialogFragment loadingDialogFragment;
 
     private List<Category> movies;
-    private ImageView imageViewCategorySelectIcon;
 
 
     public MainFragment() {
@@ -66,6 +65,7 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         movies = new ArrayList<>();
+        loadingDialogFragment = new LoadingDialogFragment();
     }
 
     @Override
@@ -95,9 +95,8 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
         imageViewMoviePoster = view.findViewById(R.id.imageview_main_movie_poster);
         imageViewCategorySelectIcon = view.findViewById(R.id.imageview_main_dropdown_icon);
         buttonMovieInfo = view.findViewById(R.id.button_main_info_button);
-        progressBar = view.findViewById(R.id.spin_kit);
         recyclerViewListMovie = view.findViewById(R.id.recyclerview_main_category_list);
-        progressBar.setVisibility(View.VISIBLE);
+        loadingDialogFragment.show(this.getParentFragmentManager(), LoadingDialogFragment.TAG);
 
         movieAdapter = new CategoryAdapter(movies, this);
         recyclerViewListMovie.setAdapter(movieAdapter);
@@ -185,7 +184,7 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
                     movies.add(new Category("Popular", movieResponses));
 
                     movieAdapter.notifyDataSetChanged();
-                    progressBar.setVisibility(View.GONE);
+                    loadingDialogFragment.dismiss();
                 }
 
             }
