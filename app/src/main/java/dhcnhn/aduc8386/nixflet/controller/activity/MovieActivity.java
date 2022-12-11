@@ -30,6 +30,7 @@ import dhcnhn.aduc8386.nixflet.helper.SharedPreferencesHelper;
 public class MovieActivity extends AppCompatActivity {
     private ImageView imageViewBackButton;
     private ImageView imageViewProfileManage;
+    private ImageView imageViewSearch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MovieActivity extends AppCompatActivity {
     private void bindView() {
         imageViewBackButton = findViewById(R.id.imageview_movie_back_button);
         imageViewProfileManage = findViewById(R.id.imageview_movie_account_icon);
+        imageViewSearch = findViewById(R.id.imageview_movie_search_icon);
         setProfilePicture();
 
         imageViewBackButton.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +57,14 @@ public class MovieActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MovieActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imageViewSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MovieActivity.this, SearchingActivity.class);
                 startActivity(intent);
             }
         });

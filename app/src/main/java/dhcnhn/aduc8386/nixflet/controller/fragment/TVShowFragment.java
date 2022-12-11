@@ -42,15 +42,14 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
     private TextView textViewTVShowName;
     private ImageView imageViewTVShowPoster;
     private Button buttonMovieInfo;
-
     private RecyclerView recyclerViewListTVShow;
 
     private CategoryAdapter tvShowAdapter;
+    private LoadingDialogFragment loadingDialogFragment;
 
     private List<Category> tvShows;
     private TextView textViewCategorySelect;
     private ImageView imageViewCategorySelectIcon;
-    private ProgressBar progressBar;
 
     public TVShowFragment() {
         super(R.layout.fragment_movie);
@@ -79,8 +78,8 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
         imageViewCategorySelectIcon = view.findViewById(R.id.imageview_movie_dropdown_icon);
         buttonMovieInfo = view.findViewById(R.id.button_movie_info_button);
         recyclerViewListTVShow = view.findViewById(R.id.recyclerview_movie_category_list);
-        progressBar = view.findViewById(R.id.spin_kit);
-        progressBar.setVisibility(View.VISIBLE);
+        loadingDialogFragment = new LoadingDialogFragment();
+        loadingDialogFragment.show(this.getParentFragmentManager(), LoadingDialogFragment.TAG);
 
         tvShowAdapter = new CategoryAdapter(tvShows, this);
         recyclerViewListTVShow.setAdapter(tvShowAdapter);
@@ -178,7 +177,7 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
 
                     tvShows.add(new Category("Popular TV Shows", movieResponses));
                     tvShowAdapter.notifyDataSetChanged();
-                    progressBar.setVisibility(View.GONE);
+                    loadingDialogFragment.dismiss();
                 }
 
             }

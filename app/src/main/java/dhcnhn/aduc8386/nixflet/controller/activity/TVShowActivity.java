@@ -31,6 +31,7 @@ public class TVShowActivity extends AppCompatActivity {
 
     private ImageView imageViewBackButton;
     private ImageView imageViewProfileManage;
+    private ImageView imageViewSearch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class TVShowActivity extends AppCompatActivity {
     private void bindView() {
         imageViewBackButton = findViewById(R.id.imageview_tv_show_back_button);
         imageViewProfileManage = findViewById(R.id.imageview_tv_show_account_icon);
+        imageViewSearch = findViewById(R.id.imageview_tv_show_search_icon);
         setProfilePicture();
 
         imageViewBackButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +58,14 @@ public class TVShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TVShowActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imageViewSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TVShowActivity.this, SearchingActivity.class);
                 startActivity(intent);
             }
         });

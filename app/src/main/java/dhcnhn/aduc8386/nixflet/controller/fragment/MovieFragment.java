@@ -44,13 +44,12 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
     private ImageView imageViewMoviePoster;
     private ImageView imageViewCategorySelectIcon;
     private Button buttonMovieInfo;
-
     private RecyclerView recyclerViewListMovie;
+
+    private LoadingDialogFragment loadingDialogFragment;
     private CategoryAdapter movieAdapter;
 
     private List<Category> movies;
-    private ProgressBar progressBar;
-
 
     public MovieFragment() {
         super(R.layout.fragment_movie);
@@ -80,8 +79,8 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
         imageViewCategorySelectIcon = view.findViewById(R.id.imageview_movie_dropdown_icon);
         buttonMovieInfo = view.findViewById(R.id.button_movie_info_button);
         recyclerViewListMovie = view.findViewById(R.id.recyclerview_movie_category_list);
-        progressBar = view.findViewById(R.id.spin_kit);
-        progressBar.setVisibility(View.VISIBLE);
+        loadingDialogFragment = new LoadingDialogFragment();
+        loadingDialogFragment.show(this.getParentFragmentManager(), LoadingDialogFragment.TAG);
 
         movieAdapter = new CategoryAdapter(movies, this);
         recyclerViewListMovie.setAdapter(movieAdapter);
@@ -152,7 +151,7 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
                     movies.add(new Category("Popular", movieResponses));
 
                     movieAdapter.notifyDataSetChanged();
-                    progressBar.setVisibility(View.GONE);
+                    loadingDialogFragment.dismiss();
                 }
 
             }
