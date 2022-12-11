@@ -70,12 +70,12 @@ public class SignInActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(FirebaseAuthHelper.getCurrentUser() != null) {
-                                    FirebaseDatabaseHelper.getUserReference().child(FirebaseAuthHelper.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                    FirebaseDatabaseHelper.getUserReference().child(FirebaseAuthHelper.getCurrentUser().getUid())
+                                            .addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             User user = snapshot.getValue(User.class);
                                             SharedPreferencesHelper.setUser(user);
-                                            loadingDialogFragment.dismiss();
                                         }
 
                                         @Override

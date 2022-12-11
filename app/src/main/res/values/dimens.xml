@@ -33,6 +33,9 @@
     <dimen name="movie_avatar_width_size">120dp</dimen>
     <dimen name="movie_avatar_height_size">180dp</dimen>
 
+    <dimen name="movie_avatar_width_size_50">60dp</dimen>
+    <dimen name="movie_avatar_height_size_50">90dp</dimen>
+
     <dimen name="cast_avatar_width_size">60dp</dimen>
     <dimen name="cast_avatar_height_size">100dp</dimen>
 

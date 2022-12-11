@@ -105,7 +105,7 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
                 TVShowFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_tv_show_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_tv_show_fragment_overlay, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }
@@ -118,7 +118,7 @@ public class TVShowFragment extends Fragment implements CategoryAdapter.OnCatego
                 TVShowFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_tv_show_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_tv_show_fragment_overlay, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }

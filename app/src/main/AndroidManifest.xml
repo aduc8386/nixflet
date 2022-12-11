@@ -43,6 +43,7 @@
         <activity android:name=".controller.activity.MovieActivity" />
         <activity android:name=".controller.activity.GenreActivity" />
         <activity android:name=".controller.activity.UserProfileActivity" />
+        <activity android:name=".controller.activity.SearchingActivity" />
     </application>
 
 </manifest>

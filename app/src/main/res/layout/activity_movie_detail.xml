@@ -264,7 +264,7 @@
                 android:layout_height="@dimen/regular_icon_size"
                 android:layout_marginStart="@dimen/regular_margin_50"
                 android:src="@drawable/ic_baseline_send"
-                android:tint="@color/white"
+                android:tint="@color/color_primary"
                 app:layout_constraintBottom_toBottomOf="@id/edittext_movie_detail_user_comment"
                 app:layout_constraintEnd_toEndOf="@id/recyclerview_movie_detail_user_comments"
                 app:layout_constraintStart_toEndOf="@id/edittext_movie_detail_user_comment"

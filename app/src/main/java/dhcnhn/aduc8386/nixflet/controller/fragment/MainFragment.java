@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +53,7 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
     private CategoryAdapter movieAdapter;
     private LoadingDialogFragment loadingDialogFragment;
 
-    private List<Category> movies;
+    public static List<Category> movies;
 
 
     public MainFragment() {
@@ -137,7 +136,7 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
                 MainFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_main_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_main_fragment_overlay, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }
@@ -150,7 +149,7 @@ public class MainFragment extends Fragment implements CategoryAdapter.OnCategory
                 MainFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_main_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_main_fragment_overlay, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }

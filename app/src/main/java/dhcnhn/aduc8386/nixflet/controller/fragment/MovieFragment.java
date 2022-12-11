@@ -2,7 +2,6 @@ package dhcnhn.aduc8386.nixflet.controller.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -107,7 +106,7 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
                 MovieFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_movie_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_movie_fragment_overlay, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }
@@ -120,7 +119,7 @@ public class MovieFragment extends Fragment implements CategoryAdapter.OnCategor
                 MovieFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_movie_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_movie_fragment_overlay, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }

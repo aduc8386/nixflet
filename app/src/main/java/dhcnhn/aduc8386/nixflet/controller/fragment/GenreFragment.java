@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -117,7 +116,7 @@ public class GenreFragment extends Fragment implements CategoryAdapter.OnCategor
                 GenreFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_genre_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_genre_fragment_overlay, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }
@@ -130,7 +129,7 @@ public class GenreFragment extends Fragment implements CategoryAdapter.OnCategor
                 GenreFragment.this.getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.fragment_container_genre_fragment_category, categorySelectFragment)
+                        .add(R.id.fragment_container_genre_fragment_overlay, categorySelectFragment)
                         .addToBackStack(categorySelectFragment.getClass().getName())
                         .commit();
             }

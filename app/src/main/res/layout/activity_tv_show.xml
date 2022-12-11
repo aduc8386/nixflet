@@ -80,7 +80,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container_tv_show_fragment_category"
+        android:id="@+id/fragment_container_tv_show_fragment_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

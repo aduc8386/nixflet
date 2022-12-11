@@ -134,11 +134,14 @@ public class SignUpActivity extends AppCompatActivity {
                         } catch (FirebaseAuthWeakPasswordException e) {
                             editTextPassword.setError(e.getMessage());
                             editTextPassword.requestFocus();
+                            loadingDialogFragment.dismiss();
                         } catch (FirebaseAuthUserCollisionException | FirebaseAuthInvalidCredentialsException e) {
                             editTextEmail.setError(e.getMessage());
                             editTextEmail.requestFocus();
+                            loadingDialogFragment.dismiss();
                         } catch (Exception e) {
                             Log.d("TAG", "onComplete: " + e);
+                            loadingDialogFragment.dismiss();
                         }
                     } else {
                         Log.d("TAG", "onComplete: something went wrong");
@@ -155,7 +158,8 @@ public class SignUpActivity extends AppCompatActivity {
                 FirebaseDatabaseHelper.getUserReference().child(user.getId()).setValue(user, (error, ref) -> {
                     FirebaseStorageHelper.setProfilePicture(Uri.parse(user.getProfilePicture()));
                     Log.d("TAG", "onComplete: user data upload successful");
-                    loadingDialogFragment.dismiss();
+
+                    FirebaseAuthHelper.getInstance().signOut();
                     Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

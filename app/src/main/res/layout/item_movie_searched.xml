@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/regular_margin_50"
+    android:background="@color/transparent"
+    android:padding="@dimen/app_padding_50">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_item_movie_searched_movie_avatar"
+        android:layout_width="@dimen/movie_avatar_width_size_50"
+        android:layout_height="@dimen/movie_avatar_height_size_50"
+        app:cardCornerRadius="@dimen/regular_radius_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_item_movie_searched_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_item_movie_searched_movie_name"
+        style="@style/WhiteText.Normal.125"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/regular_margin_50"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/card_view_item_movie_searched_movie_avatar"
+        app:layout_constraintTop_toTopOf="@id/card_view_item_movie_searched_movie_avatar" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_item_movie_searched_movie_overview"
+        style="@style/WhiteText.Italic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_margin_50"
+        android:maxLines="3"
+        android:textAlignment="textStart"
+        android:textColor="@color/white_60"
+        app:layout_constraintEnd_toEndOf="@id/textview_item_movie_searched_movie_name"
+        app:layout_constraintStart_toStartOf="@id/textview_item_movie_searched_movie_name"
+        app:layout_constraintTop_toBottomOf="@id/textview_item_movie_searched_movie_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
